@@ -8,7 +8,7 @@ import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/
 
 export default function DesignA() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-700 to-slate-800 text-white">
       {/* Fixed Navigation Header */}
       <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -32,7 +32,7 @@ export default function DesignA() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
             The New Development Imperative
           </h1>
           <p className="text-xl text-slate-400 dark:text-slate-300 mb-8 leading-relaxed">
@@ -42,7 +42,7 @@ export default function DesignA() {
             Thrivemore Technology Advisors helps developers de-risk their investments and create enduring value by architecting the digital DNA of their communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button size="lg" className="bg-slate-600 hover:bg-slate-700">
               <a href="#contact">Schedule a Consultation</a>
             </Button>
             <Button variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800">
@@ -137,7 +137,7 @@ export default function DesignA() {
                     { phase: "Operations & Management", description: "Ongoing operations support and technology evolution planning" }
                   ].map((item, index) => (
                     <div key={index} className="flex items-start space-x-4">
-                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                         {index + 1}
                       </div>
                       <div>
@@ -188,8 +188,8 @@ export default function DesignA() {
             ].map((pillar, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-center">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <pillar.icon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                  <div className="w-16 h-16 bg-slate-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <pillar.icon className="h-8 w-8 text-slate-600 dark:text-slate-400" />
                   </div>
                   <CardTitle className="text-slate-900 dark:text-white">{pillar.title}</CardTitle>
                   <CardDescription className="text-slate-600 dark:text-slate-400">{pillar.description}</CardDescription>
@@ -246,8 +246,8 @@ export default function DesignA() {
                     {study.client} • {study.location}
                   </CardDescription>
                   <div className="flex space-x-4 text-sm">
-                    <span className="text-blue-600 dark:text-blue-400">{study.projectSize.acres.toLocaleString()} acres</span>
-                    <span className="text-blue-600 dark:text-blue-400">{study.projectSize.units.toLocaleString()} units</span>
+                    <span className="text-slate-600 dark:text-slate-400">{study.projectSize.acres.toLocaleString()} acres</span>
+                    <span className="text-slate-600 dark:text-slate-400">{study.projectSize.units.toLocaleString()} units</span>
                     <span className="text-green-600 dark:text-green-400">{study.projectSize.value} value</span>
                   </div>
                 </CardHeader>
@@ -281,11 +281,11 @@ export default function DesignA() {
           {/* Stats Section */}
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
             <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">{companyStats.acres.toLocaleString()}+</div>
+              <div className="text-4xl font-bold text-slate-400 mb-2">{companyStats.acres.toLocaleString()}+</div>
               <div className="text-slate-400">Acres Planned</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">{companyStats.units.toLocaleString()}+</div>
+              <div className="text-4xl font-bold text-slate-400 mb-2">{companyStats.units.toLocaleString()}+</div>
               <div className="text-slate-400">Residential Units</div>
             </div>
             <div>
@@ -293,7 +293,7 @@ export default function DesignA() {
               <div className="text-slate-400">Total Investment Value</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">{companyStats.projects}+</div>
+              <div className="text-4xl font-bold text-slate-400 mb-2">{companyStats.projects}+</div>
               <div className="text-slate-400">Master Plans Delivered</div>
             </div>
           </div>
@@ -323,7 +323,7 @@ export default function DesignA() {
                 <CardContent>
                   <p className="text-slate-600 dark:text-slate-300 text-sm">{member.bio}</p>
                   {member.yearsExperience && (
-                    <p className="text-blue-600 dark:text-blue-400 text-sm mt-2 font-semibold">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 font-semibold">
                       {member.yearsExperience}+ years experience
                     </p>
                   )}
@@ -361,19 +361,19 @@ export default function DesignA() {
                 <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Why Choose Thrivemore?</h4>
                 <ul className="space-y-2 text-slate-600 dark:text-slate-300">
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
                     Guaranteed connectivity from day one
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
                     Transform infrastructure costs into revenue streams
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
                     Proven track record with premier developers
                   </li>
                   <li className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
                     Future-proof technology roadmaps
                   </li>
                 </ul>
@@ -393,7 +393,7 @@ export default function DesignA() {
                       <p className="text-slate-600 dark:text-slate-300">amy@thrivemoreadvisors.com</p>
                       <p className="text-slate-600 dark:text-slate-300">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                    <Button className="w-full bg-slate-600 hover:bg-slate-700">
                       Schedule Consultation
                     </Button>
                   </div>
