@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { Shield, TrendingUp, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,7 +40,7 @@ export default function DesignA() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-8 mt-16 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent"
+            className="text-6xl font-bold mb-8 mt-20 text-slate-900 dark:text-white"
           >
             The New Development Imperative
           </motion.h1>
@@ -55,11 +56,11 @@ export default function DesignA() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0">
-              <a href="#contact">Schedule a Consultation</a>
+            <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0 min-h-12 flex items-center justify-center">
+              <Link href="#contact" className="w-full h-full flex items-center justify-center">Schedule a Consultation</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-600/10 hover:border-green-500 hover:text-green-500">
-              <a href="#proof">View Case Studies</a>
+            <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-600/10 hover:border-green-500 hover:text-green-500 min-h-12 flex items-center justify-center">
+              <Link href="#proof" className="w-full h-full flex items-center justify-center">View Case Studies</Link>
             </Button>
           </motion.div>
           <motion.div
@@ -326,8 +327,8 @@ export default function DesignA() {
             {teamMembers.map((member, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-center">
                 <CardHeader>
-                  <div className="w-24 h-24 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white dark:border-slate-600">
-                    <Users className="h-12 w-12 text-slate-500 dark:text-slate-400" />
+                  <div className="w-24 h-24 bg-white dark:bg-slate-800 border-2 border-slate-900 dark:border-white rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <Users className="h-12 w-12 text-slate-900 dark:text-white" />
                   </div>
                   <CardTitle className="text-slate-900 dark:text-white">{member.name}</CardTitle>
                   <CardDescription className="text-slate-600 dark:text-slate-400">{member.title}</CardDescription>
@@ -405,8 +406,8 @@ export default function DesignA() {
                       <p className="text-slate-600 dark:text-slate-300">amy@thrivemoreadvisors.com</p>
                       <p className="text-slate-600 dark:text-slate-300">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0">
-                      Schedule Consultation
+                    <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0 min-h-12 flex items-center justify-center">
+                      <Link href="#contact" className="w-full h-full flex items-center justify-center">Schedule Consultation</Link>
                     </Button>
                   </div>
                 </CardContent>

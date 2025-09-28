@@ -2,12 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Play, MapPin, Clock, DollarSign, TrendingUp, Users, Lightbulb, Building2, Wifi } from "lucide-react";
+import { Play, MapPin, Clock, TrendingUp, Users, Building2, Wifi } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/data/content";
+import { teamMembers, caseStudies, valueModels, companyStats } from "@/data/content";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
@@ -187,7 +187,7 @@ export default function DesignD() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-8 text-white">
               Every Revolution Starts with a Problem
             </h2>
             <p className="text-xl text-slate-300 leading-relaxed mb-12">
@@ -235,7 +235,7 @@ export default function DesignD() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-6 text-white">
               The Journey from Risk to Revenue
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -406,7 +406,7 @@ export default function DesignD() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-8 text-white">
               Your Story Starts Here
             </h2>
             <p className="text-xl text-slate-300 leading-relaxed mb-12">
@@ -423,7 +423,7 @@ export default function DesignD() {
                 className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-xl border border-slate-600"
               >
                 <h3 className="text-2xl font-bold text-white mb-4">The Challenge You Face</h3>
-                <ul className="space-y-3 text-slate-300">
+                <ul className="space-y-3 text-slate-900 dark:text-slate-300">
                   <li className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                     <span>Uncertain connectivity landscape</span>
@@ -451,7 +451,7 @@ export default function DesignD() {
                 className="bg-gradient-to-br from-green-800 to-blue-800 p-8 rounded-xl border border-green-600"
               >
                 <h3 className="text-2xl font-bold text-white mb-4">The Future We Build</h3>
-                <ul className="space-y-3 text-slate-200">
+                <ul className="space-y-3 text-slate-900 dark:text-slate-200">
                   <li className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                     <span>Guaranteed day-one connectivity</span>
@@ -472,16 +472,6 @@ export default function DesignD() {
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-12 py-6 text-lg border-0">
-                <a href="#contact">Begin Your Transformation</a>
-              </Button>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -506,55 +496,55 @@ export default function DesignD() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: true }}
-              className="space-y-2"
+              className="space-y-3 p-6 bg-gradient-to-br from-teal-500/10 to-cyan-600/10 rounded-xl border border-teal-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
                 <AnimatedCounter end={114} suffix="K+" />
               </div>
-              <div className="text-slate-300">Acres Connected</div>
+              <div className="text-slate-300 font-medium">Acres Connected</div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-2"
+              className="space-y-3 p-6 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl border border-cyan-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 <AnimatedCounter end={130} suffix="K+" />
               </div>
-              <div className="text-slate-300">Smart Homes</div>
+              <div className="text-slate-300 font-medium">Smart Homes</div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
               viewport={{ once: true }}
-              className="space-y-2"
+              className="space-y-3 p-6 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl border border-green-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
                 <AnimatedCounter end={71} prefix="$" suffix="B+" />
               </div>
-              <div className="text-slate-300">Investment Value</div>
+              <div className="text-slate-300 font-medium">Investment Value</div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.4 }}
               viewport={{ once: true }}
-              className="space-y-2"
+              className="space-y-3 p-6 bg-gradient-to-br from-purple-500/10 to-indigo-600/10 rounded-xl border border-purple-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
                 <AnimatedCounter end={47} suffix="+" />
               </div>
-              <div className="text-slate-300">Master Plans</div>
+              <div className="text-slate-300 font-medium">Master Plans</div>
             </motion.div>
           </div>
         </div>

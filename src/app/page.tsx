@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/shared/logo";
-import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { Palette, Zap, BarChart3, Play } from "lucide-react";
 
 export default function Home() {
   const designs = [
@@ -66,27 +63,23 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white dark">
       {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <Logo showTagline />
-          <ThemeToggle />
+      <header className="border-b border-slate-700">
+        <div className="container mx-auto px-4 py-6 flex justify-center items-center">
+          <Logo />
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="py-20 text-center">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-5xl font-bold mb-6">
+          <h1 className="text-5xl font-bold mb-6 text-white">
             Thrivemore Technology Advisors
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl text-slate-300 mb-8">
             Choose from four distinct design approaches for our digital presence.
             Each design targets the same audience with a unique aesthetic and user experience.
-          </p>
-          <p className="text-lg text-muted-foreground">
-            The Future Well Grounded™
           </p>
         </div>
       </section>
@@ -97,10 +90,10 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {designs.map((design) => (
               <Link key={design.id} href={design.route} className="block h-full">
-                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer hover:scale-105 transform transition-transform">
+                <Card className="h-full hover:shadow-lg hover:shadow-slate-700/50 transition-all cursor-pointer hover:scale-105 transform transition-transform bg-slate-800 border-slate-700">
                   <CardHeader>
-                    <CardTitle className="text-2xl">{design.title}</CardTitle>
-                    <CardDescription className="text-base">
+                    <CardTitle className="text-2xl text-white">{design.title}</CardTitle>
+                    <CardDescription className="text-base text-slate-300">
                       {design.description}
                     </CardDescription>
                   </CardHeader>
@@ -131,13 +124,13 @@ export default function Home() {
 
                     <ul className="space-y-2 mb-6">
                       {design.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm">
-                          <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
+                        <li key={index} className="flex items-center text-sm text-slate-300">
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
                           {feature}
                         </li>
                       ))}
                     </ul>
-                    <div className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md text-center font-medium">
+                    <div className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-2 px-4 rounded-md text-center font-medium hover:from-cyan-600 hover:to-blue-700 transition-colors">
                       View {design.title} Design
                     </div>
                   </CardContent>
@@ -149,10 +142,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 mt-16">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
+      <footer className="border-t border-slate-700 py-8 mt-16">
+        <div className="container mx-auto px-4 text-center text-slate-400">
           <p>&copy; 2025 Thrivemore Technology Advisors. All rights reserved.</p>
-          <p className="mt-2">Four designs, one vision: The Future Well Grounded™</p>
+          <p className="mt-2">Four designs, one vision</p>
         </div>
       </footer>
     </div>

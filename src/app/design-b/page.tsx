@@ -10,56 +10,31 @@ import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-// Particle animation component
+// Particle animation component - subtle floating dots
 function ParticleNetwork() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      <svg className="w-full h-full">
-        {/* Animated connecting lines */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.line
-            key={i}
-            x1={Math.random() * 100 + "%"}
-            y1={Math.random() * 100 + "%"}
-            x2={Math.random() * 100 + "%"}
-            y2={Math.random() * 100 + "%"}
-            stroke="rgba(6, 182, 212, 0.4)"
-            strokeWidth="2"
-            className="dark:stroke-opacity-40 stroke-opacity-60"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{
-              duration: 2,
-              delay: i * 0.1,
-              repeat: Infinity,
-              repeatType: "reverse",
-              repeatDelay: 1
-            }}
-            style={{ zIndex: 1 }}
-          />
-        ))}
-        {/* Animated nodes */}
-        {Array.from({ length: 15 }).map((_, i) => (
-          <motion.circle
-            key={i}
-            cx={Math.random() * 100 + "%"}
-            cy={Math.random() * 100 + "%"}
-            r="3"
-            fill="rgba(6, 182, 212, 0.7)"
-            className="dark:fill-opacity-70 fill-opacity-80"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{
-              duration: 1,
-              delay: i * 0.1,
-              repeat: Infinity,
-              repeatType: "reverse",
-              repeatDelay: 2
-            }}
-            style={{ zIndex: 1 }}
-          />
-        ))}
-      </svg>
+    <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+      {/* Floating dots animation */}
+      {Array.from({ length: 30 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, -50, 0],
+            opacity: [0.3, 0.8, 0.3],
+            scale: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 4 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+          }}
+        />
+      ))}
     </div>
   );
 }
@@ -121,7 +96,7 @@ export default function DesignB() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-7xl font-bold mb-8 bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
+            <h1 className="text-7xl font-bold mb-8 text-white">
               The New Development Imperative
             </h1>
           </motion.div>
@@ -212,7 +187,7 @@ export default function DesignB() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-bold mb-6 text-white">
                   The Connectivity Mandate
                 </h2>
                 <p className="text-xl text-cyan-200 mb-8 leading-relaxed">
@@ -292,7 +267,7 @@ export default function DesignB() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               Beyond Wires: The Connected Community
             </h2>
             <p className="text-xl text-cyan-200 leading-relaxed">
@@ -364,7 +339,7 @@ export default function DesignB() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               Our Advisory Practice
             </h2>
             <p className="text-xl text-cyan-200 leading-relaxed">
@@ -531,7 +506,7 @@ export default function DesignB() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               The Thrivemore Value Matrix
             </h2>
             <p className="text-xl text-cyan-200 leading-relaxed">
@@ -590,7 +565,7 @@ export default function DesignB() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               Case Studies in Innovation
             </h2>
             <p className="text-xl text-cyan-200 leading-relaxed">
@@ -688,7 +663,7 @@ export default function DesignB() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               Begin Your Technology Master Plan
             </h2>
             <p className="text-xl text-cyan-200 leading-relaxed">

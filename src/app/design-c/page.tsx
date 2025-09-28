@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Shield, TrendingUp, Target, Users, ChevronRight, BarChart, DollarSign, Building } from "lucide-react";
+import { Shield, TrendingUp, Target, Users, ChevronRight, BarChart, DollarSign, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/shared/logo";
@@ -42,7 +42,7 @@ function DataVisualization() {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         {valueModels.map((model, index) => {
           const value = metrics[selectedMetric as keyof typeof metrics].data[index];
           const maxValue = Math.max(...metrics[selectedMetric as keyof typeof metrics].data);
@@ -57,13 +57,18 @@ function DataVisualization() {
                    selectedMetric === "revenue" ? `$${value}K` : `${value}%`}
                 </span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-2">
+              <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-3 relative">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${percentage}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  className={`h-2 rounded-full bg-gradient-to-r ${metrics[selectedMetric as keyof typeof metrics].color}`}
+                  transition={{ duration: 1.5, delay: index * 0.2 }}
+                  className={`h-3 rounded-full bg-gradient-to-r ${metrics[selectedMetric as keyof typeof metrics].color}`}
                 />
+                <div className={`absolute right-2 top-1/2 transform -translate-y-1/2 text-xs font-semibold ${
+                  percentage > 50 ? 'text-white' : 'text-slate-700 dark:text-slate-300'
+                }`}>
+                  {percentage.toFixed(0)}%
+                </div>
               </div>
             </div>
           );
@@ -108,7 +113,7 @@ export default function DesignC() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-slate-900 dark:text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-black text-slate-900 dark:text-white">
       {/* Fixed Navigation Header */}
       <nav className="fixed top-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -138,7 +143,7 @@ export default function DesignC() {
               transition={{ duration: 0.8 }}
             >
               <div className="space-y-6">
-                <div className="inline-flex items-center px-3 py-1 bg-slate-900 dark:bg-slate-200 text-white dark:text-slate-900 rounded-full text-sm font-medium">
+                <div className="inline-flex items-center px-3 py-1 bg-slate-900 dark:bg-slate-700 text-white dark:text-slate-200 rounded-full text-sm font-medium">
                   The Future Well Grounded™
                 </div>
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
@@ -215,7 +220,7 @@ export default function DesignC() {
       </section>
 
       {/* Approach Section */}
-      <section id="approach" className="py-24 bg-white dark:bg-slate-800">
+      <section id="approach" className="py-24 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -596,8 +601,8 @@ export default function DesignC() {
                       <p className="text-slate-600 dark:text-slate-400">amy@thrivemoreadvisors.com</p>
                       <p className="text-slate-600 dark:text-slate-400">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
-                      Start Your Project
+                    <Button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600 min-h-12 flex items-center justify-center">
+                      <Link href="#contact" className="w-full h-full flex items-center justify-center">Start Your Project</Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -608,14 +613,11 @@ export default function DesignC() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-600 py-12 bg-white dark:bg-slate-800">
+      <footer className="border-t border-slate-200 dark:border-slate-600 py-12 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-black">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <Logo />
-              <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm">
-                The Future Well Grounded™
-              </p>
             </div>
             <div>
               <h4 className="font-semibold text-slate-900 dark:text-white mb-4">Services</h4>
