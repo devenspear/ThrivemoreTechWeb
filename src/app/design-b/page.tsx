@@ -122,24 +122,6 @@ export default function DesignB() {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-          >
-            <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0">
-              <a href="#contact">Get Started</a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-cyan-500 text-cyan-300 hover:bg-cyan-500/10 hover:border-cyan-400"
-            >
-              <a href="#case-studies">View Demos</a>
-            </Button>
-          </motion.div>
-
           {/* Tech Stats Grid */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

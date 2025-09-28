@@ -1,8 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/shared/logo";
 
 export default function Home() {
+  // Force dark mode on splash page
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }, []);
   const designs = [
     {
       id: "design-a",

@@ -82,24 +82,11 @@ const ParallaxHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-2xl text-white/90 mb-4 leading-relaxed"
+          className="text-2xl text-slate-900 dark:text-white/90 mb-4 leading-relaxed"
         >
           Every great community starts with a vision. Ours begins with connection.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-            <a href="#story">Begin the Journey</a>
-          </Button>
-          <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-            <a href="#contact">Start Your Story</a>
-          </Button>
-        </motion.div>
       </motion.div>
 
       {/* Animated background elements */}
@@ -640,9 +627,6 @@ export default function DesignD() {
                       <p className="text-slate-400">amy@thrivemoreadvisors.com</p>
                       <p className="text-slate-400">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white">
-                      Begin Your Transformation
-                    </Button>
                   </div>
                 </CardContent>
               </Card>

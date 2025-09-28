@@ -59,6 +59,7 @@ function DataVisualization() {
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-3 relative">
                 <motion.div
+                  key={`${selectedMetric}-${index}`}
                   initial={{ width: 0 }}
                   animate={{ width: `${percentage}%` }}
                   transition={{ duration: 1.5, delay: index * 0.2 }}
@@ -220,7 +221,7 @@ export default function DesignC() {
       </section>
 
       {/* Approach Section */}
-      <section id="approach" className="py-24 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800">
+      <section id="approach" className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -418,7 +419,7 @@ export default function DesignC() {
       </section>
 
       {/* Case Studies */}
-      <section id="case-studies" className="py-24 bg-white dark:bg-slate-900">
+      <section id="case-studies" className="py-24 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-black">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -613,7 +614,7 @@ export default function DesignC() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-600 py-12 bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-black">
+      <footer className="border-t border-slate-200 dark:border-slate-600 py-12 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-black">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
