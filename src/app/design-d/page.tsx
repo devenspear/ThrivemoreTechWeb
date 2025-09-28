@@ -9,7 +9,42 @@ import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/data/content";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
+// Animated Counter Component
+function AnimatedCounter({ end, duration = 2, prefix = "", suffix = "" }: {
+  end: number;
+  duration?: number;
+  prefix?: string;
+  suffix?: string;
+}) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    let startTime: number;
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [end, duration, hasAnimated]);
+
+  return (
+    <motion.span
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      onViewportEnter={() => setHasAnimated(true)}
+      viewport={{ once: true }}
+    >
+      {prefix}{count.toLocaleString()}{suffix}
+    </motion.span>
+  );
+}
 
 
 // Parallax Hero Component
@@ -24,7 +59,7 @@ const ParallaxHero = () => {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <div ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden">
+    <div ref={ref} className="relative h-[60vh] flex items-center justify-center overflow-hidden">
       <motion.div
         style={{ y, opacity }}
         className="text-center z-10 max-w-4xl mx-auto px-4"
@@ -34,7 +69,7 @@ const ParallaxHero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <h1 className="text-6xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-6xl lg:text-8xl font-bold text-white mb-4 mt-8 leading-tight">
             The Future
             <br />
             <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
@@ -47,7 +82,7 @@ const ParallaxHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-2xl text-white/90 mb-8 leading-relaxed"
+          className="text-2xl text-white/90 mb-4 leading-relaxed"
         >
           Every great community starts with a vision. Ours begins with connection.
         </motion.p>
@@ -68,12 +103,12 @@ const ParallaxHero = () => {
       </motion.div>
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 dark:from-slate-900 dark:via-blue-900 dark:to-purple-900">
         {/* Floating particles */}
         {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-30"
+            className="absolute w-1 h-1 bg-white dark:bg-white rounded-full opacity-30 dark:opacity-30"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -86,6 +121,27 @@ const ParallaxHero = () => {
               duration: 3 + Math.random() * 2,
               repeat: Infinity,
               delay: Math.random() * 2,
+            }}
+          />
+        ))}
+        {/* Additional particles for light mode */}
+        {Array.from({ length: 30 }).map((_, i) => (
+          <motion.div
+            key={`light-${i}`}
+            className="absolute w-2 h-2 bg-slate-600 dark:bg-cyan-400 rounded-full opacity-20 dark:opacity-40"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              scale: [0.5, 1, 0.5],
+              opacity: [0.2, 0.6, 0.2],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
             }}
           />
         ))}
@@ -422,11 +478,85 @@ export default function DesignD() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-12 py-6 text-lg">
+              <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white px-12 py-6 text-lg border-0">
                 <a href="#contact">Begin Your Transformation</a>
               </Button>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Stories of Transformation - Collective Impact */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl font-bold mb-6 text-white">
+              Stories of Transformation
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              Collective Impact Across Communities
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+                <AnimatedCounter end={114} suffix="K+" />
+              </div>
+              <div className="text-slate-300">Acres Connected</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+                <AnimatedCounter end={130} suffix="K+" />
+              </div>
+              <div className="text-slate-300">Smart Homes</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+                <AnimatedCounter end={71} prefix="$" suffix="B+" />
+              </div>
+              <div className="text-slate-300">Investment Value</div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              <div className="text-4xl lg:text-5xl font-bold text-teal-400">
+                <AnimatedCounter end={47} suffix="+" />
+              </div>
+              <div className="text-slate-300">Master Plans</div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

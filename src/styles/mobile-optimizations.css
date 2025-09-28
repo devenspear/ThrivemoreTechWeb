@@ -1,0 +1,95 @@
+/* iOS and Android Mobile Optimizations */
+
+/* Smooth scrolling for iOS */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent zoom on focus for iOS Safari */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Better touch targets for mobile */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improved scrolling performance */
+* {
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+}
+
+/* Better viewport handling */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Prevent horizontal scroll on mobile */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Better text rendering on mobile */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Touch-friendly animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  /* Reduce text sizes for mobile */
+  h1 {
+    font-size: clamp(2rem, 8vw, 4rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+  }
+
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Improved grid layouts for mobile */
+  .grid {
+    gap: 1rem !important;
+  }
+
+  /* Better card spacing */
+  .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem !important;
+  }
+
+  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.75rem !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  /* Further reduce padding and margins */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Make buttons full width on very small screens */
+  .flex.flex-col.sm\\:flex-row button {
+    width: 100% !important;
+  }
+}

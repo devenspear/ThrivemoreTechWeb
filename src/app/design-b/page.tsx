@@ -23,8 +23,9 @@ function ParticleNetwork() {
             y1={Math.random() * 100 + "%"}
             x2={Math.random() * 100 + "%"}
             y2={Math.random() * 100 + "%"}
-            stroke="rgba(6, 182, 212, 0.3)"
-            strokeWidth="1"
+            stroke="rgba(6, 182, 212, 0.4)"
+            strokeWidth="2"
+            className="dark:stroke-opacity-40 stroke-opacity-60"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{
@@ -34,6 +35,7 @@ function ParticleNetwork() {
               repeatType: "reverse",
               repeatDelay: 1
             }}
+            style={{ zIndex: 1 }}
           />
         ))}
         {/* Animated nodes */}
@@ -42,8 +44,9 @@ function ParticleNetwork() {
             key={i}
             cx={Math.random() * 100 + "%"}
             cy={Math.random() * 100 + "%"}
-            r="2"
-            fill="rgba(6, 182, 212, 0.6)"
+            r="3"
+            fill="rgba(6, 182, 212, 0.7)"
+            className="dark:fill-opacity-70 fill-opacity-80"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
@@ -53,6 +56,7 @@ function ParticleNetwork() {
               repeatType: "reverse",
               repeatDelay: 2
             }}
+            style={{ zIndex: 1 }}
           />
         ))}
       </svg>
@@ -84,7 +88,7 @@ function AnimatedCounter({ end, duration = 2, prefix = "", suffix = "" }: {
 }
 
 export default function DesignB() {
-  const [activeSection, setActiveSection] = useState("overview");
+  const [activeSection, setActiveSection] = useState("discovery");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-cyan-900 to-teal-900 text-white overflow-x-hidden">
@@ -109,7 +113,7 @@ export default function DesignB() {
       </nav>
 
       {/* Hero Section with Particle Network */}
-      <section className="relative pt-32 pb-20 px-4 min-h-screen flex items-center">
+      <section className="relative pt-24 pb-16 px-4 min-h-[75vh] flex items-center">
         <ParticleNetwork />
         <div className="container mx-auto text-center max-w-5xl relative z-10">
           <motion.div
@@ -259,16 +263,16 @@ export default function DesignB() {
 
                   <div className="space-y-4 text-center">
                     <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-red-400">NO GUARANTEE</div>
-                      <div className="text-cyan-200 text-sm">of connectivity for new developments</div>
+                      <div className="text-2xl font-bold text-red-300 dark:text-red-400">NO GUARANTEE</div>
+                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">of connectivity for new developments</div>
                     </div>
                     <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-orange-400">MASSIVE LIABILITY</div>
-                      <div className="text-cyan-200 text-sm">for unprepared developers</div>
+                      <div className="text-2xl font-bold text-orange-300 dark:text-orange-400">MASSIVE LIABILITY</div>
+                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">for unprepared developers</div>
                     </div>
                     <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-green-400">SOLUTION READY</div>
-                      <div className="text-cyan-200 text-sm">with Thrivemore's expertise</div>
+                      <div className="text-2xl font-bold text-green-300 dark:text-green-400">SOLUTION READY</div>
+                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">with Thrivemore's expertise</div>
                     </div>
                   </div>
                 </motion.div>
@@ -387,6 +391,7 @@ export default function DesignB() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
+                      onMouseEnter={() => setActiveSection(stage.id)}
                       onClick={() => setActiveSection(stage.id)}
                       className={`w-full text-left p-4 rounded-lg border transition-all duration-300 ${
                         activeSection === stage.id
@@ -437,7 +442,78 @@ export default function DesignB() {
                       </div>
                     </div>
                   )}
-                  {/* Add other timeline content sections as needed */}
+                  {activeSection === "planning" && (
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Master Planning</h3>
+                      <p className="text-cyan-200 mb-6">
+                        Development of comprehensive technology infrastructure plans that integrate seamlessly with your community design.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Network Design</h4>
+                          <p className="text-sm text-cyan-200">Fiber backbone and distribution planning</p>
+                        </div>
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Future-Proofing</h4>
+                          <p className="text-sm text-cyan-200">20+ year technology roadmap development</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {activeSection === "selection" && (
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Negotiation & Selection</h3>
+                      <p className="text-cyan-200 mb-6">
+                        Competitive evaluation process ensuring optimal provider selection and maximum developer value.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">RFP Process</h4>
+                          <p className="text-sm text-cyan-200">Structured competitive bidding framework</p>
+                        </div>
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Deal Structuring</h4>
+                          <p className="text-sm text-cyan-200">Optimized partnership agreements</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {activeSection === "implementation" && (
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Implementation</h3>
+                      <p className="text-cyan-200 mb-6">
+                        End-to-end project management ensuring on-time, on-budget technology infrastructure deployment.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Project Management</h4>
+                          <p className="text-sm text-cyan-200">Construction oversight and coordination</p>
+                        </div>
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Quality Assurance</h4>
+                          <p className="text-sm text-cyan-200">Testing and performance validation</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {activeSection === "operations" && (
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Operations & Evolution</h3>
+                      <p className="text-cyan-200 mb-6">
+                        Ongoing optimization and technology evolution to ensure long-term community value.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Monitoring</h4>
+                          <p className="text-sm text-cyan-200">Real-time performance tracking</p>
+                        </div>
+                        <div className="p-4 bg-slate-800/50 rounded">
+                          <h4 className="font-semibold text-cyan-400 mb-2">Evolution</h4>
+                          <p className="text-sm text-cyan-200">Technology upgrade planning</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </motion.div>
               </div>
             </div>
@@ -686,7 +762,7 @@ export default function DesignB() {
                       <p className="text-cyan-200">amy@thrivemoreadvisors.com</p>
                       <p className="text-cyan-200">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600">
+                    <Button className="w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white border-0">
                       Connect & Explore
                     </Button>
                   </div>

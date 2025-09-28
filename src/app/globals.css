@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/design-tokens.css";
+@import "../styles/mobile-optimizations.css";
 
 /* Enhanced theme system with proper light/dark mode support */
 :root {

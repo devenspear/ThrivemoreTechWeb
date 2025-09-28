@@ -1,10 +1,13 @@
-import Link from "next/link";
-import { ArrowLeft, Shield, TrendingUp, Zap, Users } from "lucide-react";
+"use client"
+
+import { Shield, TrendingUp, Zap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/data/content";
+import { ClientScrollingBanner } from "@/components/shared/client-scrolling-banner";
+import { teamMembers, caseStudies, valueModels, companyStats } from "@/data/content";
+import { motion } from "framer-motion";
 
 export default function DesignA() {
   return (
@@ -30,40 +33,49 @@ export default function DesignA() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
+      <section className="pt-20 pb-20 px-4">
         <div className="container mx-auto text-center max-w-4xl">
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-6xl font-bold mb-8 mt-16 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent"
+          >
             The New Development Imperative
-          </h1>
+          </motion.h1>
           <p className="text-xl text-slate-400 dark:text-slate-300 mb-8 leading-relaxed">
             From Land and Bricks to Enduring, Connected Places
           </p>
           <p className="text-lg text-slate-400 mb-12">
             Thrivemore Technology Advisors helps developers de-risk their investments and create enduring value by architecting the digital DNA of their communities.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-slate-600 hover:bg-slate-700">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0">
               <a href="#contact">Schedule a Consultation</a>
             </Button>
-            <Button variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800">
+            <Button variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-600/10 hover:border-green-500 hover:text-green-500">
               <a href="#proof">View Case Studies</a>
             </Button>
-          </div>
-          <div className="mt-16 text-center">
-            <p className="text-slate-400 text-sm mb-2">Trusted by Premier Developers</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              {clients.slice(0, 4).map((client, index) => (
-                <div key={index} className="text-slate-500 font-medium">
-                  {client}
-                </div>
-              ))}
-            </div>
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-16 text-center"
+          >
+            <p className="text-slate-400 text-sm mb-4">Trusted by Premier Developers</p>
+            <ClientScrollingBanner />
+          </motion.div>
         </div>
       </section>
 
       {/* The Problem Section */}
-      <section id="problem" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-150 dark:bg-slate-800/50">
+      <section id="problem" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:bg-gradient-to-br dark:from-slate-800/50 dark:via-slate-800/30 dark:to-slate-700/40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">A Fundamental Shift in Development Risk You Can't Afford to Ignore</h2>
@@ -76,8 +88,8 @@ export default function DesignA() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-red-400" />
+                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-red-600 dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Impeded Sales</CardTitle>
               </CardHeader>
@@ -88,8 +100,8 @@ export default function DesignA() {
 
             <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-red-400" />
+                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-red-600 dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Reduced Valuations</CardTitle>
               </CardHeader>
@@ -100,8 +112,8 @@ export default function DesignA() {
 
             <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mb-4">
-                  <Shield className="h-6 w-6 text-red-400" />
+                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
+                  <Shield className="h-6 w-6 text-red-600 dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Financing Challenges</CardTitle>
               </CardHeader>
@@ -114,7 +126,7 @@ export default function DesignA() {
       </section>
 
       {/* Solution Section */}
-      <section id="solution" className="py-20">
+      <section id="solution" className="py-20 bg-gradient-to-br from-slate-50/30 via-slate-100/20 to-slate-200/30 dark:bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Architecting the Digital DNA of Your Community</h2>
@@ -170,7 +182,7 @@ export default function DesignA() {
       </section>
 
       {/* Value Section */}
-      <section id="value" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-150 dark:bg-slate-800/50">
+      <section id="value" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:bg-gradient-to-br dark:from-slate-800/50 dark:via-slate-800/30 dark:to-slate-700/40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">De-Risking Investments, Unlocking New Value</h2>
@@ -228,7 +240,7 @@ export default function DesignA() {
       </section>
 
       {/* Proof Section */}
-      <section id="proof" className="py-20">
+      <section id="proof" className="py-20 bg-gradient-to-br from-slate-50/30 via-slate-100/20 to-slate-200/30 dark:bg-transparent">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Case Studies in Visionary Development</h2>
@@ -301,7 +313,7 @@ export default function DesignA() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-150 dark:bg-slate-800/50">
+      <section id="team" className="py-20 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:bg-gradient-to-br dark:from-slate-800/50 dark:via-slate-800/30 dark:to-slate-700/40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Decades of Experience at the Intersection of Real Estate and Technology</h2>
@@ -314,7 +326,7 @@ export default function DesignA() {
             {teamMembers.map((member, index) => (
               <Card key={index} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-center">
                 <CardHeader>
-                  <div className="w-24 h-24 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white dark:border-slate-600">
                     <Users className="h-12 w-12 text-slate-500 dark:text-slate-400" />
                   </div>
                   <CardTitle className="text-slate-900 dark:text-white">{member.name}</CardTitle>
@@ -393,7 +405,7 @@ export default function DesignA() {
                       <p className="text-slate-600 dark:text-slate-300">amy@thrivemoreadvisors.com</p>
                       <p className="text-slate-600 dark:text-slate-300">904.944.4544</p>
                     </div>
-                    <Button className="w-full bg-slate-600 hover:bg-slate-700">
+                    <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white border-0">
                       Schedule Consultation
                     </Button>
                   </div>

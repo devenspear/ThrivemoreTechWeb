@@ -22,9 +22,9 @@ function DataVisualization() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-700">
+    <div className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg dark:shadow-slate-900/50">
       <div className="mb-6">
-        <h3 className="text-xl font-semibold mb-4">Partnership Model Comparison</h3>
+        <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Partnership Model Comparison</h3>
         <div className="flex space-x-2">
           {Object.entries(metrics).map(([key, metric]) => (
             <button
@@ -32,8 +32,8 @@ function DataVisualization() {
               onClick={() => setSelectedMetric(key)}
               className={`px-3 py-1 text-sm rounded-md transition-colors ${
                 selectedMetric === key
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
-                  : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  ? "bg-slate-900 text-white dark:bg-slate-200 dark:text-slate-900"
+                  : "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600"
               }`}
             >
               {metric.label}
@@ -51,13 +51,13 @@ function DataVisualization() {
           return (
             <div key={index} className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">{model.name}</span>
-                <span className="text-sm text-slate-600 dark:text-slate-400">
+                <span className="text-sm font-medium text-slate-900 dark:text-white">{model.name}</span>
+                <span className="text-sm text-slate-600 dark:text-slate-300">
                   {selectedMetric === "irr" ? `${value}%` :
                    selectedMetric === "revenue" ? `$${value}K` : `${value}%`}
                 </span>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+              <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-2">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${percentage}%` }}
@@ -108,9 +108,9 @@ export default function DesignC() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 text-slate-900 dark:text-white">
       {/* Fixed Navigation Header */}
-      <nav className="fixed top-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50">
+      <nav className="fixed top-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Logo />
@@ -138,7 +138,7 @@ export default function DesignC() {
               transition={{ duration: 0.8 }}
             >
               <div className="space-y-6">
-                <div className="inline-flex items-center px-3 py-1 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full text-sm font-medium">
+                <div className="inline-flex items-center px-3 py-1 bg-slate-900 dark:bg-slate-200 text-white dark:text-slate-900 rounded-full text-sm font-medium">
                   The Future Well Grounded™
                 </div>
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
@@ -215,7 +215,7 @@ export default function DesignC() {
       </section>
 
       {/* Approach Section */}
-      <section id="approach" className="py-24 bg-white dark:bg-slate-900">
+      <section id="approach" className="py-24 bg-white dark:bg-slate-800">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -233,7 +233,7 @@ export default function DesignC() {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-4">
             {[
               {
                 stage: "01",
@@ -333,18 +333,19 @@ export default function DesignC() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
+                  onMouseEnter={() => setActiveValue(index)}
                   onClick={() => setActiveValue(index)}
                   className={`w-full text-left p-6 rounded-xl border transition-all duration-300 ${
                     activeValue === index
-                      ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white"
-                      : "bg-white dark:bg-slate-900 text-slate-900 dark:text-white border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                      ? "bg-slate-900 dark:bg-slate-200 text-white dark:text-slate-900 border-slate-900 dark:border-slate-200"
+                      : "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-slate-200 dark:border-slate-600 hover:border-slate-300 dark:hover:border-slate-500"
                   }`}
                 >
                   <div className="flex items-start space-x-4">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
                       activeValue === index
                         ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
+                        : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
                     }`}>
                       <pillar.icon className="h-6 w-6" />
                     </div>
@@ -607,7 +608,7 @@ export default function DesignC() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-700 py-12 bg-white dark:bg-slate-900">
+      <footer className="border-t border-slate-200 dark:border-slate-600 py-12 bg-white dark:bg-slate-800">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
