@@ -45,16 +45,35 @@ function DataVisualization() {
       <div className="space-y-3">
         {valueModels.map((model, index) => {
           const value = metrics[selectedMetric as keyof typeof metrics].data[index];
-          const maxValue = Math.max(...metrics[selectedMetric as keyof typeof metrics].data);
-          const percentage = (value / maxValue) * 100;
+
+          // Calculate percentage based on metric type
+          let percentage: number;
+          let displayValue: string;
+
+          if (selectedMetric === "irr") {
+            // IRR values are already percentages, use directly
+            percentage = value;
+            displayValue = `${value}%`;
+          } else if (selectedMetric === "revenue") {
+            // Revenue values - show relative to max for comparison
+            const maxValue = Math.max(...metrics[selectedMetric as keyof typeof metrics].data);
+            percentage = (value / maxValue) * 100;
+            displayValue = `$${value}K`;
+          } else if (selectedMetric === "risk") {
+            // Risk reduction values are already percentages, use directly
+            percentage = value;
+            displayValue = `${value}%`;
+          } else {
+            percentage = value;
+            displayValue = `${value}`;
+          }
 
           return (
             <div key={index} className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-slate-900 dark:text-white">{model.name}</span>
                 <span className="text-sm text-slate-600 dark:text-slate-300">
-                  {selectedMetric === "irr" ? `${value}%` :
-                   selectedMetric === "revenue" ? `$${value}K` : `${value}%`}
+                  {displayValue}
                 </span>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-3 relative">
@@ -144,9 +163,6 @@ export default function DesignC() {
               transition={{ duration: 0.8 }}
             >
               <div className="space-y-6">
-                <div className="inline-flex items-center px-3 py-1 bg-slate-900 dark:bg-slate-700 text-white dark:text-slate-200 rounded-full text-sm font-medium">
-                  The Future Well Grounded™
-                </div>
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
                   Architecting the Digital DNA of Tomorrow's Communities
                 </h1>
