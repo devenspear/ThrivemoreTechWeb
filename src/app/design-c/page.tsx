@@ -25,29 +25,26 @@ function DataVisualization() {
   const metrics = {
     irr: {
       label: "IRR Growth",
-      color: "hsl(142, 76%, 36%)",
-      bgColor: "from-emerald-500 to-teal-500",
-      hoverBgColor: "from-emerald-600 to-teal-600",
+      buttonColor: "bg-emerald-600 hover:bg-emerald-700",
+      gradientId: "emeraldGradient",
       chartConfig: {
-        value: { label: "IRR %", color: "hsl(142, 76%, 36%)" }
+        value: { label: "IRR %", color: "url(#emeraldGradient)" }
       } satisfies ChartConfig
     },
     revenue: {
       label: "Revenue Impact",
-      color: "hsl(217, 91%, 60%)",
-      bgColor: "from-blue-500 to-indigo-500",
-      hoverBgColor: "from-blue-600 to-indigo-600",
+      buttonColor: "bg-blue-600 hover:bg-blue-700",
+      gradientId: "blueGradient",
       chartConfig: {
-        value: { label: "Revenue $K", color: "hsl(217, 91%, 60%)" }
+        value: { label: "Revenue $K", color: "url(#blueGradient)" }
       } satisfies ChartConfig
     },
     risk: {
       label: "Risk Reduction",
-      color: "hsl(24, 70%, 50%)",
-      bgColor: "from-orange-500 to-red-500",
-      hoverBgColor: "from-orange-600 to-red-600",
+      buttonColor: "bg-orange-600 hover:bg-orange-700",
+      gradientId: "orangeGradient",
       chartConfig: {
-        value: { label: "Risk %", color: "hsl(24, 70%, 50%)" }
+        value: { label: "Risk %", color: "url(#orangeGradient)" }
       } satisfies ChartConfig
     }
   };
@@ -77,8 +74,7 @@ function DataVisualization() {
       name: model.name,
       value: value,
       percentage: percentage,
-      displayValue: displayValue,
-      fill: metrics[selectedMetric].color
+      displayValue: displayValue
     };
   });
 
@@ -91,10 +87,10 @@ function DataVisualization() {
             <button
               key={key}
               onClick={() => setSelectedMetric(key)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-white ${
                 selectedMetric === key
-                  ? `bg-gradient-to-r ${metric.bgColor} text-white shadow-md border-2 border-white dark:border-slate-700`
-                  : `bg-gradient-to-r ${metric.bgColor} opacity-60 hover:opacity-80 text-white border-2 border-transparent`
+                  ? `${metric.buttonColor} shadow-md border-2 border-white dark:border-slate-700`
+                  : `${metric.buttonColor} opacity-50 hover:opacity-100 border-2 border-transparent`
               }`}
             >
               {metric.label}
@@ -107,8 +103,22 @@ function DataVisualization() {
         <RechartsBarChart
           data={chartData}
           layout="vertical"
-          margin={{ left: 0, right: 60, top: 5, bottom: 5 }}
+          margin={{ left: 0, right: 20, top: 5, bottom: 5 }}
         >
+          <defs>
+            <linearGradient id="emeraldGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#14b8a6" />
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#6366f1" />
+            </linearGradient>
+            <linearGradient id="orangeGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#ef4444" />
+            </linearGradient>
+          </defs>
           <YAxis
             dataKey="name"
             type="category"
@@ -126,21 +136,24 @@ function DataVisualization() {
             cursor={false}
             content={<ChartTooltipContent hideLabel />}
           />
-          <Bar dataKey="value" layout="vertical" radius={5}>
-            {chartData.map((entry, index) => (
-              <text
-                key={`label-${index}`}
-                x="100%"
-                y={index * 60 + 30}
-                fill="currentColor"
-                className="text-xs font-semibold fill-slate-900 dark:fill-white"
-                textAnchor="start"
-                dx={10}
-              >
-                {entry.percentage}%
-              </text>
-            ))}
-          </Bar>
+          <Bar dataKey="value" layout="vertical" radius={5} fill={`url(#${metrics[selectedMetric].gradientId})`} label={{
+            position: 'insideRight',
+            content: (props: any) => {
+              const { x, y, width, value, index } = props;
+              const entry = chartData[index];
+              return (
+                <text
+                  x={x + width - 10}
+                  y={y + 10}
+                  fill="white"
+                  className="text-xs font-bold"
+                  textAnchor="end"
+                >
+                  {entry.percentage}%
+                </text>
+              );
+            }
+          }} />
         </RechartsBarChart>
       </ChartContainer>
     </div>
@@ -228,7 +241,7 @@ export default function DesignC() {
               transition={{ duration: 0.8 }}
             >
               <div className="space-y-6">
-                <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
+                <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight pt-8">
                   Architecting the Digital DNA of Tomorrow's Communities
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
