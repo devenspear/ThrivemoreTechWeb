@@ -69,10 +69,10 @@ const ParallaxHero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <h1 className="text-6xl lg:text-8xl font-bold text-white mb-4 mt-8 leading-tight">
+          <h1 className="text-6xl lg:text-8xl font-bold text-slate-900 dark:text-white mb-4 mt-8 leading-tight">
             The Future
             <br />
-            <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-yellow-400 dark:via-orange-500 dark:to-red-500 bg-clip-text text-transparent">
               Well Grounded
             </span>
           </h1>
@@ -82,7 +82,7 @@ const ParallaxHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-2xl text-slate-900 dark:text-white/90 mb-4 leading-relaxed"
+          className="text-xl text-slate-700 dark:text-white/90 mb-4 leading-relaxed"
         >
           Every great community starts with a vision. Ours begins with connection.
         </motion.p>
@@ -90,12 +90,12 @@ const ParallaxHero = () => {
       </motion.div>
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 dark:from-slate-900 dark:via-blue-900 dark:to-purple-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-blue-900 dark:to-purple-900">
         {/* Floating particles */}
         {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white dark:bg-white rounded-full opacity-30 dark:opacity-30"
+            className="absolute w-1 h-1 bg-purple-400 dark:bg-white rounded-full opacity-40 dark:opacity-30"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -181,7 +181,7 @@ export default function DesignD() {
       <ParallaxHero />
 
       {/* Story Introduction */}
-      <section id="story" className="py-24 bg-gradient-to-b from-slate-900 to-slate-800">
+      <section id="story" className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -190,10 +190,10 @@ export default function DesignD() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-5xl font-bold mb-8 text-white">
+            <h2 className="text-5xl font-bold mb-8 text-slate-900 dark:text-white">
               Every Revolution Starts with a Problem
             </h2>
-            <p className="text-xl text-slate-300 leading-relaxed mb-12">
+            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-12">
               In 2019, the telecommunications landscape shifted forever. Deregulation meant no guarantees,
               no certainties, and suddenly, every new development faced an invisible threat that could
               cripple its future before the first foundation was poured.
@@ -201,9 +201,33 @@ export default function DesignD() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { icon: Building2, title: "$71 Billion at Risk", description: "Total investment value threatened by connectivity uncertainty" },
-                { icon: Clock, title: "23% Slower Sales", description: "Average impact on absorption rates without connectivity guarantees" },
-                { icon: TrendingUp, title: "15% Value Loss", description: "Reduction in property valuations due to infrastructure concerns" }
+                {
+                  icon: Building2,
+                  title: "$71 Billion at Risk",
+                  description: "Total investment value threatened by connectivity uncertainty",
+                  lightGradient: "from-red-500 to-orange-500",
+                  darkGradient: "from-red-500 to-orange-500",
+                  cardBg: "from-red-50 to-orange-50",
+                  border: "border-red-200"
+                },
+                {
+                  icon: Clock,
+                  title: "23% Slower Sales",
+                  description: "Average impact on absorption rates without connectivity guarantees",
+                  lightGradient: "from-amber-500 to-yellow-500",
+                  darkGradient: "from-amber-500 to-yellow-500",
+                  cardBg: "from-amber-50 to-yellow-50",
+                  border: "border-amber-200"
+                },
+                {
+                  icon: TrendingUp,
+                  title: "15% Value Loss",
+                  description: "Reduction in property valuations due to infrastructure concerns",
+                  lightGradient: "from-orange-500 to-red-500",
+                  darkGradient: "from-orange-500 to-red-500",
+                  cardBg: "from-orange-50 to-red-50",
+                  border: "border-orange-200"
+                }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -211,16 +235,16 @@ export default function DesignD() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-slate-800/50 p-6 rounded-xl border border-slate-700"
+                  className={`bg-gradient-to-br ${stat.cardBg} dark:bg-slate-800/50 p-6 rounded-xl border-2 ${stat.border} dark:border-slate-700 shadow-lg ${stat.cardBg.replace('from-', 'shadow-').replace('-50', '-100/50')} dark:shadow-none`}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${stat.lightGradient} rounded-xl flex items-center justify-center mx-auto mb-4 shadow-md`}>
                     {(() => {
                       const IconComponent = stat.icon;
                       return <IconComponent className="h-8 w-8 text-white" />;
                     })()}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{stat.title}</h3>
-                  <p className="text-slate-300 text-sm">{stat.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{stat.title}</h3>
+                  <p className="text-slate-700 dark:text-slate-300 text-sm">{stat.description}</p>
                 </motion.div>
               ))}
             </div>
