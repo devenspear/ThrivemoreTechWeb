@@ -92,11 +92,7 @@ body {
 /* ===== ENHANCED THEME-AWARE OVERRIDES ===== */
 /* FORCE WHITE BACKGROUNDS AND BLACK TEXT IN LIGHT MODE */
 
-/* NUCLEAR OPTION: Force ALL gradient backgrounds to be white in light mode */
-html:not(.dark) [class*="bg-gradient"] {
-  background: #ffffff !important;
-  background-image: none !important;
-}
+/* Allow gradient backgrounds in light mode */
 
 /* FORCE ONLY MAIN PAGE COLORED BACKGROUNDS TO WHITE */
 html:not(.dark) .min-h-screen[class*="bg-cyan"],
