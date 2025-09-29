@@ -69,12 +69,10 @@ const ParallaxHero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <h1 className="text-6xl lg:text-8xl font-bold text-slate-900 dark:text-white mb-4 mt-8 leading-tight">
+          <h1 className="text-6xl lg:text-8xl font-bold mb-4 mt-8 leading-tight bg-gradient-to-r from-slate-700 via-slate-500 to-slate-700 dark:from-slate-200 dark:via-white dark:to-slate-200 bg-clip-text text-transparent">
             The Future
             <br />
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-yellow-400 dark:via-orange-500 dark:to-red-500 bg-clip-text text-transparent">
-              Well Grounded
-            </span>
+            Well Grounded
           </h1>
         </motion.div>
 
