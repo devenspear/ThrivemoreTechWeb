@@ -72,7 +72,7 @@ const ParallaxHero = () => {
           <h1 className="text-6xl lg:text-8xl font-bold text-slate-900 dark:text-white mb-4 mt-8 leading-tight">
             The Future
             <br />
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-yellow-400 dark:via-orange-500 dark:to-red-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 dark:from-yellow-400 dark:via-orange-500 dark:to-red-500 bg-clip-text text-transparent">
               Well Grounded
             </span>
           </h1>
@@ -90,7 +90,7 @@ const ParallaxHero = () => {
       </motion.div>
 
       {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-blue-900 dark:to-purple-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-300 via-purple-300 to-pink-300 dark:from-slate-900 dark:via-blue-900 dark:to-purple-900">
         {/* Floating particles */}
         {Array.from({ length: 50 }).map((_, i) => (
           <motion.div
