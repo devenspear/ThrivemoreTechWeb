@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
 
 interface LogoProps {
   variant?: "default" | "white" | "dark"
@@ -11,8 +10,6 @@ interface LogoProps {
 }
 
 export function Logo({ variant = "default", size = "md", showTagline = false }: LogoProps) {
-  const [showTooltip, setShowTooltip] = useState(false)
-
   const sizeClasses = {
     sm: "h-16",
     md: "h-20",
@@ -30,8 +27,6 @@ export function Logo({ variant = "default", size = "md", showTagline = false }: 
       <Link
         href="/"
         className="flex items-center space-x-3"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
       >
         <div className={`${sizeClasses[size]} ${widthClasses[size]} relative overflow-hidden`}>
           <Image
@@ -50,13 +45,6 @@ export function Logo({ variant = "default", size = "md", showTagline = false }: 
           </div>
         )}
       </Link>
-
-      {/* Hover Tooltip */}
-      {showTooltip && !showTagline && (
-        <div className="absolute left-full ml-3 px-2 py-1 bg-slate-800 dark:bg-white text-white dark:text-slate-800 text-sm rounded shadow-lg whitespace-nowrap z-50">
-          Back to Designs
-        </div>
-      )}
     </div>
   )
 }
