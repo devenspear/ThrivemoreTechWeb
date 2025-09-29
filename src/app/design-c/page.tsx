@@ -22,7 +22,7 @@ function DataVisualization() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-xl p-8 border border-slate-200 dark:border-slate-600 shadow-lg dark:shadow-slate-900/50">
+    <div className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-700 shadow-lg dark:shadow-slate-900/50">
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Partnership Model Comparison</h3>
         <div className="flex space-x-2">
@@ -186,15 +186,6 @@ export default function DesignC() {
                   We de-risk multi-billion dollar developments by securing connectivity infrastructure
                   and transforming technology from a cost center into a revenue-generating asset.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
-                    <a href="#contact">Start Your Project</a>
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" size="lg" className="border-slate-300 dark:border-slate-600">
-                    <a href="#case-studies">View Success Stories</a>
-                  </Button>
-                </div>
               </div>
             </motion.div>
 
@@ -205,7 +196,7 @@ export default function DesignC() {
               className="relative"
             >
               {/* Statistics Dashboard */}
-              <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl">
+              <div className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl">
                 <h3 className="text-lg font-semibold mb-6 text-slate-900 dark:text-white">Impact Metrics</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center">
@@ -376,7 +367,7 @@ export default function DesignC() {
                   className={`w-full text-left p-6 rounded-xl border transition-all duration-300 ${
                     activeValue === index
                       ? "bg-slate-900 dark:bg-slate-200 text-white dark:text-slate-900 border-slate-900 dark:border-slate-200"
-                      : "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-slate-200 dark:border-slate-600 hover:border-slate-300 dark:hover:border-slate-500"
+                      : "bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 text-slate-900 dark:text-white border-slate-200 dark:border-slate-600 hover:border-slate-300 dark:hover:border-slate-500"
                   }`}
                 >
                   <div className="flex items-start space-x-4">
@@ -408,7 +399,7 @@ export default function DesignC() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
+              className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-700"
             >
               <div className="mb-6">
                 <div className="w-16 h-16 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center mb-4">
@@ -577,7 +568,7 @@ export default function DesignC() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
                   Contact Information
                 </h3>

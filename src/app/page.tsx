@@ -11,6 +11,7 @@ export default function Home() {
   useEffect(() => {
     document.documentElement.classList.add('dark');
     document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }, []);
   const designs = [
     {
