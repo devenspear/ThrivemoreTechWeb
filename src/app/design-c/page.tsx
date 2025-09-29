@@ -10,30 +10,91 @@ import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { teamMembers, caseStudies, valueModels, companyStats, clients } from "@/data/content";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Bar, BarChart as RechartsBarChart, XAxis, YAxis } from "recharts";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 
 // Interactive Data Visualization Component
 function DataVisualization() {
-  const [selectedMetric, setSelectedMetric] = useState("irr");
+  const [selectedMetric, setSelectedMetric] = useState<"irr" | "revenue" | "risk">("irr");
 
   const metrics = {
-    irr: { label: "IRR Growth", data: [5, 8, 12, 15], color: "from-emerald-500 to-teal-500" },
-    revenue: { label: "Revenue Impact", data: [100, 300, 800, 1200], color: "from-blue-500 to-indigo-500" },
-    risk: { label: "Risk Reduction", data: [90, 75, 45, 20], color: "from-orange-500 to-red-500" }
+    irr: {
+      label: "IRR Growth",
+      color: "hsl(142, 76%, 36%)",
+      bgColor: "from-emerald-500 to-teal-500",
+      hoverBgColor: "from-emerald-600 to-teal-600",
+      chartConfig: {
+        value: { label: "IRR %", color: "hsl(142, 76%, 36%)" }
+      } satisfies ChartConfig
+    },
+    revenue: {
+      label: "Revenue Impact",
+      color: "hsl(217, 91%, 60%)",
+      bgColor: "from-blue-500 to-indigo-500",
+      hoverBgColor: "from-blue-600 to-indigo-600",
+      chartConfig: {
+        value: { label: "Revenue $K", color: "hsl(217, 91%, 60%)" }
+      } satisfies ChartConfig
+    },
+    risk: {
+      label: "Risk Reduction",
+      color: "hsl(24, 70%, 50%)",
+      bgColor: "from-orange-500 to-red-500",
+      hoverBgColor: "from-orange-600 to-red-600",
+      chartConfig: {
+        value: { label: "Risk %", color: "hsl(24, 70%, 50%)" }
+      } satisfies ChartConfig
+    }
   };
+
+  // Prepare chart data based on selected metric with percentage
+  const chartData = valueModels.map((model, index) => {
+    let value: number;
+    let percentage: number;
+    let displayValue: string;
+
+    if (selectedMetric === "irr") {
+      value = [5, 8, 12, 15][index];
+      percentage = value;
+      displayValue = `${value}%`;
+    } else if (selectedMetric === "revenue") {
+      value = [100, 300, 800, 1200][index];
+      const maxValue = 1200;
+      percentage = Math.round((value / maxValue) * 100);
+      displayValue = `$${value}K`;
+    } else {
+      value = [90, 75, 45, 20][index];
+      percentage = value;
+      displayValue = `${value}%`;
+    }
+
+    return {
+      name: model.name,
+      value: value,
+      percentage: percentage,
+      displayValue: displayValue,
+      fill: metrics[selectedMetric].color
+    };
+  });
 
   return (
     <div className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-700 shadow-lg dark:shadow-slate-900/50">
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Partnership Model Comparison</h3>
-        <div className="flex space-x-2">
-          {Object.entries(metrics).map(([key, metric]) => (
+        <div className="flex space-x-3">
+          {(Object.entries(metrics) as [keyof typeof metrics, typeof metrics[keyof typeof metrics]][]).map(([key, metric]) => (
             <button
               key={key}
               onClick={() => setSelectedMetric(key)}
-              className={`px-3 py-1 text-sm rounded-md transition-colors ${
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                 selectedMetric === key
-                  ? "bg-slate-900 text-white dark:bg-slate-200 dark:text-slate-900"
-                  : "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600"
+                  ? `bg-gradient-to-r ${metric.bgColor} text-white shadow-md border-2 border-white dark:border-slate-700`
+                  : `bg-gradient-to-r ${metric.bgColor} opacity-60 hover:opacity-80 text-white border-2 border-transparent`
               }`}
             >
               {metric.label}
@@ -42,58 +103,46 @@ function DataVisualization() {
         </div>
       </div>
 
-      <div className="space-y-3">
-        {valueModels.map((model, index) => {
-          const value = metrics[selectedMetric as keyof typeof metrics].data[index];
-
-          // Calculate percentage based on metric type
-          let percentage: number;
-          let displayValue: string;
-
-          if (selectedMetric === "irr") {
-            // IRR values are already percentages, use directly
-            percentage = value;
-            displayValue = `${value}%`;
-          } else if (selectedMetric === "revenue") {
-            // Revenue values - show relative to max for comparison
-            const maxValue = Math.max(...metrics[selectedMetric as keyof typeof metrics].data);
-            percentage = (value / maxValue) * 100;
-            displayValue = `$${value}K`;
-          } else if (selectedMetric === "risk") {
-            // Risk reduction values are already percentages, use directly
-            percentage = value;
-            displayValue = `${value}%`;
-          } else {
-            percentage = value;
-            displayValue = `${value}`;
-          }
-
-          return (
-            <div key={index} className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-slate-900 dark:text-white">{model.name}</span>
-                <span className="text-sm text-slate-600 dark:text-slate-300">
-                  {displayValue}
-                </span>
-              </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-600 rounded-full h-3 relative">
-                <motion.div
-                  key={`${selectedMetric}-${index}`}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percentage}%` }}
-                  transition={{ duration: 1.5, delay: index * 0.2 }}
-                  className={`h-3 rounded-full bg-gradient-to-r ${metrics[selectedMetric as keyof typeof metrics].color}`}
-                />
-                <div className={`absolute right-2 top-1/2 transform -translate-y-1/2 text-xs font-semibold ${
-                  percentage > 50 ? 'text-white' : 'text-slate-700 dark:text-slate-300'
-                }`}>
-                  {percentage.toFixed(0)}%
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <ChartContainer config={metrics[selectedMetric].chartConfig} className="h-[300px] w-full">
+        <RechartsBarChart
+          data={chartData}
+          layout="vertical"
+          margin={{ left: 0, right: 60, top: 5, bottom: 5 }}
+        >
+          <YAxis
+            dataKey="name"
+            type="category"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            className="text-xs fill-slate-900 dark:fill-white"
+          />
+          <XAxis
+            type="number"
+            domain={[0, selectedMetric === "revenue" ? 1200 : 100]}
+            hide
+          />
+          <ChartTooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel />}
+          />
+          <Bar dataKey="value" layout="vertical" radius={5}>
+            {chartData.map((entry, index) => (
+              <text
+                key={`label-${index}`}
+                x="100%"
+                y={index * 60 + 30}
+                fill="currentColor"
+                className="text-xs font-semibold fill-slate-900 dark:fill-white"
+                textAnchor="start"
+                dx={10}
+              >
+                {entry.percentage}%
+              </text>
+            ))}
+          </Bar>
+        </RechartsBarChart>
+      </ChartContainer>
     </div>
   );
 }
