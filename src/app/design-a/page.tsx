@@ -16,8 +16,24 @@ export default function DesignA() {
       {/* Fixed Navigation Header */}
       <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-6">
             <Logo variant="white" />
+            <div className="hidden md:flex items-center gap-3">
+              {[
+                { id: "design-a", letter: "A", route: "/design-a", color: "from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800" },
+                { id: "design-b", letter: "B", route: "/design-b", color: "from-cyan-500 to-cyan-700 hover:from-cyan-600 hover:to-cyan-800" },
+                { id: "design-c", letter: "C", route: "/design-c", color: "from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800" },
+                { id: "design-d", letter: "D", route: "/design-d", color: "from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800" }
+              ].map((design) => (
+                <Link key={design.id} href={design.route}>
+                  <div className={`w-10 h-10 bg-gradient-to-br ${design.color} rounded-lg flex items-center justify-center cursor-pointer border-2 border-white/30 hover:border-white/50 transition-all hover:scale-110`}>
+                    <span className="text-white text-lg font-bold">
+                      {design.letter}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <nav className="hidden md:flex space-x-6">
@@ -87,39 +103,39 @@ export default function DesignA() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
+            <Card className="bg-gradient-to-br from-red-50 via-orange-50 to-white dark:bg-slate-900/50 border-red-200 dark:border-slate-700 shadow-lg shadow-red-100/50 dark:shadow-none">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-red-600 dark:text-red-400" />
+                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4 shadow-md">
+                  <TrendingUp className="h-6 w-6 text-white dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Impeded Sales</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600 dark:text-slate-300">Without guaranteed connectivity, sales velocity decreases and buyer confidence erodes, directly impacting project timelines and absorption rates.</p>
+                <p className="text-slate-700 dark:text-slate-300">Without guaranteed connectivity, sales velocity decreases and buyer confidence erodes, directly impacting project timelines and absorption rates.</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
+            <Card className="bg-gradient-to-br from-orange-50 via-amber-50 to-white dark:bg-slate-900/50 border-orange-200 dark:border-slate-700 shadow-lg shadow-orange-100/50 dark:shadow-none">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-red-600 dark:text-red-400" />
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-amber-500 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4 shadow-md">
+                  <TrendingUp className="h-6 w-6 text-white dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Reduced Valuations</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600 dark:text-slate-300">Properties without proper technology infrastructure command lower prices and face challenges in attracting premium buyers and tenants.</p>
+                <p className="text-slate-700 dark:text-slate-300">Properties without proper technology infrastructure command lower prices and face challenges in attracting premium buyers and tenants.</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700">
+            <Card className="bg-gradient-to-br from-amber-50 via-yellow-50 to-white dark:bg-slate-900/50 border-amber-200 dark:border-slate-700 shadow-lg shadow-amber-100/50 dark:shadow-none">
               <CardHeader>
-                <div className="w-12 h-12 bg-red-500/20 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4">
-                  <Shield className="h-6 w-6 text-red-600 dark:text-red-400" />
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 dark:bg-red-500/30 rounded-full flex items-center justify-center mb-4 shadow-md">
+                  <Shield className="h-6 w-6 text-white dark:text-red-400" />
                 </div>
                 <CardTitle className="text-slate-900 dark:text-white">Financing Challenges</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600 dark:text-slate-300">Lenders increasingly require technology master plans and connectivity guarantees as part of their due diligence and loan requirements.</p>
+                <p className="text-slate-700 dark:text-slate-300">Lenders increasingly require technology master plans and connectivity guarantees as part of their due diligence and loan requirements.</p>
               </CardContent>
             </Card>
           </div>
@@ -198,25 +214,33 @@ export default function DesignA() {
               { title: "Engineering Revenue", icon: TrendingUp, description: "New Investment Models" },
               { title: "Enhancing Value", icon: Zap, description: "Long-Term Asset Value" },
               { title: "Streamlining Complexity", icon: Users, description: "Expert Navigation" }
-            ].map((pillar, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-slate-600/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <pillar.icon className="h-8 w-8 text-slate-600 dark:text-slate-400" />
-                  </div>
-                  <CardTitle className="text-slate-900 dark:text-white">{pillar.title}</CardTitle>
-                  <CardDescription className="text-slate-600 dark:text-slate-400">{pillar.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+            ].map((pillar, index) => {
+              const colors = [
+                { bg: "from-blue-50 via-indigo-50 to-white", border: "border-blue-200", icon: "from-blue-500 to-indigo-500", shadow: "shadow-blue-100/50" },
+                { bg: "from-green-50 via-emerald-50 to-white", border: "border-green-200", icon: "from-green-500 to-emerald-500", shadow: "shadow-green-100/50" },
+                { bg: "from-purple-50 via-violet-50 to-white", border: "border-purple-200", icon: "from-purple-500 to-violet-500", shadow: "shadow-purple-100/50" },
+                { bg: "from-cyan-50 via-teal-50 to-white", border: "border-cyan-200", icon: "from-cyan-500 to-teal-500", shadow: "shadow-cyan-100/50" }
+              ];
+              return (
+                <Card key={index} className={`bg-gradient-to-br ${colors[index].bg} dark:bg-slate-900/50 ${colors[index].border} dark:border-slate-700 text-center shadow-lg ${colors[index].shadow} dark:shadow-none`}>
+                  <CardHeader>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${colors[index].icon} dark:bg-slate-600/20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md`}>
+                      <pillar.icon className="h-8 w-8 text-white dark:text-slate-400" />
+                    </div>
+                    <CardTitle className="text-slate-900 dark:text-white">{pillar.title}</CardTitle>
+                    <CardDescription className="text-slate-700 dark:text-slate-400">{pillar.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              );
+            })}
           </div>
 
           {/* Partnership Model Table */}
           <div className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-center mb-8">Partnership Model Returns</h3>
-            <div className="bg-gradient-to-br from-white to-slate-100 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="bg-gradient-to-br from-green-50 via-emerald-50 to-white dark:bg-slate-900/50 rounded-lg border border-green-200 dark:border-slate-700 overflow-hidden shadow-lg shadow-green-100/50 dark:shadow-none">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-slate-100 to-slate-200 dark:bg-slate-800">
+                <thead className="bg-gradient-to-r from-green-100 to-emerald-100 dark:bg-slate-800">
                   <tr>
                     <th className="px-6 py-4 text-left text-slate-900 dark:text-white font-semibold">Model</th>
                     <th className="px-6 py-4 text-left text-slate-900 dark:text-white font-semibold">Description</th>

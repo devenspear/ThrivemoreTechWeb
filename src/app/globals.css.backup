@@ -1,0 +1,351 @@
+@import "tailwindcss";
+@import "../styles/design-tokens.css";
+@import "../styles/mobile-optimizations.css";
+
+/* Enhanced theme system with proper light/dark mode support */
+:root {
+  /* ShadCN UI Variables - Enhanced with design tokens */
+  --background: var(--background-primary);
+  --foreground: var(--text-primary);
+  --card: var(--surface-primary);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-elevated);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--interactive-primary);
+  --primary-foreground: var(--text-inverse);
+  --secondary: var(--interactive-secondary);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-secondary);
+  --muted-foreground: var(--text-tertiary);
+  --accent: var(--interactive-secondary);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--status-error);
+  --destructive-foreground: var(--text-inverse);
+  --border: var(--surface-border);
+  --input: var(--surface-border);
+  --ring: var(--focus-ring);
+  --radius: var(--radius-md);
+}
+
+[data-theme="dark"], .dark {
+  /* ShadCN UI Variables inherit from design tokens automatically */
+}
+
+@theme inline {
+  /* ShadCN UI integration with design tokens */
+  --color-background: var(--background-primary);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--surface-primary);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--surface-elevated);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--interactive-primary);
+  --color-primary-foreground: var(--text-inverse);
+  --color-secondary: var(--interactive-secondary);
+  --color-secondary-foreground: var(--text-primary);
+  --color-muted: var(--surface-secondary);
+  --color-muted-foreground: var(--text-tertiary);
+  --color-accent: var(--interactive-secondary);
+  --color-accent-foreground: var(--text-primary);
+  --color-destructive: var(--status-error);
+  --color-destructive-foreground: var(--text-inverse);
+  --color-border: var(--surface-border);
+  --color-input: var(--surface-border);
+  --color-ring: var(--focus-ring);
+  --radius: var(--radius-md);
+}
+
+* {
+  border-color: var(--surface-border);
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.dark body {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+/* Force specific page backgrounds to be white in light mode */
+.min-h-screen {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+.dark .min-h-screen {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+}
+
+/* ===== ENHANCED THEME-AWARE OVERRIDES ===== */
+/* FORCE WHITE BACKGROUNDS AND BLACK TEXT IN LIGHT MODE */
+
+/* NUCLEAR OPTION: Force ALL gradient backgrounds to be white in light mode */
+html:not(.dark) [class*="bg-gradient"] {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* FORCE ONLY MAIN PAGE COLORED BACKGROUNDS TO WHITE */
+html:not(.dark) .min-h-screen[class*="bg-cyan"],
+html:not(.dark) .min-h-screen[class*="bg-blue"],
+html:not(.dark) .min-h-screen[class*="bg-teal"],
+html:not(.dark) .min-h-screen[class*="bg-purple"],
+html:not(.dark) .min-h-screen[class*="bg-slate"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* FORCE MAIN BACKGROUNDS TO WHITE */
+html:not(.dark) .min-h-screen,
+html:not(.dark) section:not([class*="bg-gradient-to-r"]),
+html:not(.dark) body {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* PRESERVE BUTTON AND UI ELEMENT STYLING */
+html:not(.dark) button,
+html:not(.dark) .bg-primary,
+html:not(.dark) .bg-gradient-to-r,
+html:not(.dark) [class*="bg-orange"],
+html:not(.dark) [class*="bg-red"],
+html:not(.dark) [class*="bg-yellow"] {
+  background: revert !important;
+  background-color: revert !important;
+  background-image: revert !important;
+}
+
+/* TARGETED OVERRIDES - MAIN CONTAINERS ONLY */
+html:not(.dark) .min-h-screen,
+html:not(.dark) section,
+html:not(.dark) main,
+html:not(.dark) div[class*="min-h-screen"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+/* FORCE ROOT VARIABLES TO WHITE */
+html:not(.dark) {
+  --background-primary: #ffffff !important;
+  --background-secondary: #ffffff !important;
+  --background-tertiary: #ffffff !important;
+  --surface-primary: #ffffff !important;
+  --surface-secondary: #ffffff !important;
+  --surface-tertiary: #ffffff !important;
+}
+
+/* Restore gradients in dark mode */
+.dark [class*="bg-gradient"] {
+  background-image: initial;
+}
+
+/* Core background overrides - ALWAYS WHITE IN LIGHT MODE */
+.bg-slate-900 { background-color: #ffffff !important; }
+.bg-slate-800 { background-color: #ffffff !important; }
+.bg-slate-700 { background-color: #ffffff !important; }
+.bg-slate-600 { background-color: #ffffff !important; }
+.bg-slate-50 { background-color: #ffffff !important; }
+.bg-slate-100 { background-color: #ffffff !important; }
+.bg-white { background-color: #ffffff !important; }
+
+/* Dark mode backgrounds */
+.dark .bg-slate-900 { background-color: var(--neutral-950) !important; }
+.dark .bg-slate-800 { background-color: var(--neutral-900) !important; }
+.dark .bg-slate-700 { background-color: var(--neutral-800) !important; }
+.dark .bg-slate-600 { background-color: var(--neutral-700) !important; }
+.dark .bg-slate-50 { background-color: var(--neutral-800) !important; }
+.dark .bg-slate-100 { background-color: var(--neutral-700) !important; }
+
+/* Transparency variants - WHITE IN LIGHT MODE */
+.bg-slate-900\/95 { background-color: rgba(255, 255, 255, 0.95) !important; }
+.bg-slate-900\/50 { background-color: rgba(255, 255, 255, 0.5) !important; }
+.bg-slate-800\/50 { background-color: rgba(255, 255, 255, 0.5) !important; }
+.bg-white\/90 { background-color: rgba(255, 255, 255, 0.9) !important; }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1) !important; }
+
+/* Dark mode transparency variants */
+.dark .bg-slate-900\/95 { background-color: rgba(10, 10, 10, 0.95) !important; }
+.dark .bg-slate-900\/50 { background-color: rgba(10, 10, 10, 0.5) !important; }
+.dark .bg-slate-800\/50 { background-color: rgba(38, 38, 38, 0.5) !important; }
+
+/* Text color overrides - TARGETED TEXT ONLY */
+
+/* Specific overrides for common text classes */
+html:not(.dark) .text-white { color: #000000 !important; }
+html:not(.dark) .text-slate-900 { color: #000000 !important; }
+html:not(.dark) .text-slate-800 { color: #000000 !important; }
+html:not(.dark) .text-slate-700 { color: #000000 !important; }
+html:not(.dark) .text-slate-600 { color: #000000 !important; }
+html:not(.dark) .text-slate-500 { color: #000000 !important; }
+html:not(.dark) .text-slate-400 { color: #000000 !important; }
+html:not(.dark) .text-slate-300 { color: #000000 !important; }
+html:not(.dark) .text-cyan-300 { color: #000000 !important; }
+html:not(.dark) .text-cyan-400 { color: #000000 !important; }
+html:not(.dark) .text-blue-400 { color: #000000 !important; }
+html:not(.dark) .text-teal-400 { color: #000000 !important; }
+
+/* Override ONLY background-dependent colored text in light mode */
+html:not(.dark) [class*="text-cyan"]:not(.bg-clip-text) { color: #000000 !important; }
+html:not(.dark) [class*="text-blue"]:not(.bg-clip-text) { color: #000000 !important; }
+html:not(.dark) [class*="text-teal"]:not(.bg-clip-text) { color: #000000 !important; }
+html:not(.dark) [class*="text-purple"]:not(.bg-clip-text) { color: #000000 !important; }
+html:not(.dark) [class*="text-indigo"]:not(.bg-clip-text) { color: #000000 !important; }
+
+/* PRESERVE gradient text effects in both modes */
+html:not(.dark) .bg-clip-text { color: initial !important; }
+.dark .bg-clip-text { color: initial !important; }
+
+/* ENHANCED DARK MODE TEXT COLORS */
+.dark .text-white { color: #ffffff !important; }
+.dark .text-slate-900 { color: #f5f5f5 !important; }
+.dark .text-slate-800 { color: #f5f5f5 !important; }
+.dark .text-slate-700 { color: #d4d4d4 !important; }
+.dark .text-slate-600 { color: #d4d4d4 !important; }
+.dark .text-slate-500 { color: #a3a3a3 !important; }
+.dark .text-slate-400 { color: #a3a3a3 !important; }
+.dark .text-slate-300 { color: #d4d4d4 !important; }
+
+/* DARK MODE HEADERS AND IMPORTANT TEXT */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #ffffff !important;
+}
+
+.dark [class*="text-cyan"] { color: #22d3ee !important; }
+.dark [class*="text-blue"] { color: #60a5fa !important; }
+.dark [class*="text-teal"] { color: #2dd4bf !important; }
+.dark [class*="text-purple"] { color: #a78bfa !important; }
+.dark [class*="text-indigo"] { color: #818cf8 !important; }
+
+/* Border color overrides */
+.border-slate-700 { border-color: var(--surface-border) !important; }
+.border-slate-600 { border-color: var(--surface-border) !important; }
+.border-slate-200 { border-color: var(--surface-border) !important; }
+.border-slate-300 { border-color: var(--surface-border-strong) !important; }
+.border-white { border-color: var(--surface-border-strong) !important; }
+
+/* ===== DESIGN-SPECIFIC GRADIENT OVERRIDES ===== */
+/* ALL GRADIENTS WHITE/LIGHT IN LIGHT MODE */
+
+/* Design A - Conservative Professional - Gray Scheme */
+.bg-gradient-to-br.from-slate-900.via-slate-700.to-slate-800 {
+  background: linear-gradient(135deg, #ffffff, #f8fafc, #f1f5f9) !important;
+}
+
+/* Design B - Tech Forward - FORCE WHITE BACKGROUND */
+.bg-gradient-to-br.from-slate-900.via-cyan-900.to-teal-900 {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Design C - Modern Minimalist */
+.bg-gradient-to-br.from-white.to-slate-100,
+.bg-gradient-to-br.from-slate-50.to-slate-100,
+.bg-gradient-to-br.from-slate-50.via-slate-100.to-slate-150 {
+  background: linear-gradient(135deg, #ffffff, #fafafa) !important;
+}
+
+/* Design D - Interactive Storytelling */
+.bg-gradient-to-br.from-slate-900.via-blue-900.to-purple-900 {
+  background: linear-gradient(135deg, #ffffff, #f8fafc, #eff6ff) !important;
+}
+
+.bg-gradient-to-b.from-slate-900.to-slate-800 {
+  background: linear-gradient(to bottom, #ffffff, #f8fafc) !important;
+}
+
+/* Dark mode gradients */
+.dark .bg-gradient-to-br.from-slate-900.via-slate-700.to-slate-800 {
+  background: linear-gradient(135deg, #0f172a, #374151, #1e293b) !important;
+}
+
+.dark .bg-gradient-to-br.from-slate-900.via-cyan-900.to-teal-900 {
+  background: linear-gradient(135deg, #0f172a, #164e63, #134e4a) !important;
+}
+
+.dark .bg-gradient-to-br.from-white.to-slate-100,
+.dark .bg-gradient-to-br.from-slate-50.to-slate-100,
+.dark .bg-gradient-to-br.from-slate-50.via-slate-100.to-slate-150 {
+  background: linear-gradient(135deg, #262626, #171717) !important;
+}
+
+.dark .bg-gradient-to-br.from-slate-900.via-blue-900.to-purple-900 {
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #581c87) !important;
+}
+
+.dark .bg-gradient-to-b.from-slate-900.to-slate-800 {
+  background: linear-gradient(to bottom, #0f172a, #1e293b) !important;
+}
+
+/* Design D accent gradients - preserve vibrant colors for visual impact */
+.bg-gradient-to-r.from-orange-400.to-red-500:not(.bg-clip-text),
+.bg-gradient-to-r.from-red-500.to-orange-500:not(.bg-clip-text),
+.bg-gradient-to-r.from-yellow-500.to-orange-500:not(.bg-clip-text) {
+  background: var(--gradient-design-d-accent) !important;
+}
+
+.hover\:from-yellow-600.hover\:to-orange-600:hover:not(.bg-clip-text) {
+  background: var(--gradient-design-d-accent) !important;
+}
+
+/* ===== SPECIAL CASES FOR DESIGN D ===== */
+/* Handle inverted color schemes where dark elements appear on light backgrounds */
+[data-theme="light"] .bg-white.text-slate-900,
+:root:not(.dark) .bg-white.text-slate-900 {
+  background-color: var(--text-primary) !important;
+  color: var(--surface-primary) !important;
+}
+
+[data-theme="light"] .text-white.border-white,
+:root:not(.dark) .text-white.border-white {
+  color: var(--text-primary) !important;
+  border-color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .hover\:bg-white\/10:hover,
+:root:not(.dark) .hover\:bg-white\/10:hover {
+  background-color: color-mix(in srgb, var(--text-primary) 10%, transparent) !important;
+}
+
+/* ===== ANIMATION AND INTERACTION ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+/* ===== FOCUS AND ACCESSIBILITY ===== */
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--selection-background);
+  color: var(--text-primary);
+}
+

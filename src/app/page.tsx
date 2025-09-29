@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Logo } from "@/components/shared/logo";
+import { motion } from "framer-motion";
 
 export default function Home() {
   // Force dark mode on splash page
@@ -14,59 +15,27 @@ export default function Home() {
   const designs = [
     {
       id: "design-a",
-      title: "Conservative Professional",
-      description: "Traditional, authoritative design with deep blues and charcoals. Targets C-suite executives with emphasis on trust and credibility.",
-      features: ["Clean, professional aesthetic", "Conservative color palette", "Authority-focused messaging", "Traditional layouts"],
+      letter: "A",
       route: "/design-a",
-      thumbnail: {
-        background: "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-900",
-        accent: "from-blue-400 to-cyan-400",
-        title: "THRIVEMORE",
-        subtitle: "Technology Advisors",
-        tagline: "The Future Well Grounded™"
-      }
+      color: "from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800"
     },
     {
       id: "design-b",
-      title: "Tech-Forward",
-      description: "Modern tech aesthetic with particle networks and dynamic elements. Emphasizes innovation and connectivity.",
-      features: ["Dynamic animations", "Tech-oriented visuals", "Interactive elements", "Innovation-focused"],
+      letter: "B",
       route: "/design-b",
-      thumbnail: {
-        background: "bg-gradient-to-br from-slate-900 via-cyan-900 to-teal-900",
-        accent: "from-cyan-400 to-teal-400",
-        title: "THRIVEMORE",
-        subtitle: "Technology Advisors",
-        tagline: "The Future Well Grounded™"
-      }
+      color: "from-cyan-500 to-cyan-700 hover:from-cyan-600 hover:to-cyan-800"
     },
     {
       id: "design-c",
-      title: "Modern Minimalist",
-      description: "Sophisticated design with clean lines and data visualizations. Balances authority with innovation.",
-      features: ["Minimalist layouts", "Data visualizations", "Sophisticated animations", "Clean design language"],
+      letter: "C",
       route: "/design-c",
-      thumbnail: {
-        background: "bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-slate-800",
-        accent: "from-slate-600 to-slate-800 dark:from-slate-300 dark:to-slate-100",
-        title: "THRIVEMORE",
-        subtitle: "Technology Advisors",
-        tagline: "The Future Well Grounded™"
-      }
+      color: "from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800"
     },
     {
       id: "design-d",
-      title: "Interactive Storytelling",
-      description: "Engaging narrative-driven design with motion graphics and interactive elements.",
-      features: ["Storytelling approach", "Interactive timelines", "Motion graphics", "Engaging user journey"],
+      letter: "D",
       route: "/design-d",
-      thumbnail: {
-        background: "bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900",
-        accent: "from-yellow-400 to-orange-500",
-        title: "The Future",
-        subtitle: "Well Grounded",
-        tagline: "Every great community starts with a vision"
-      }
+      color: "from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800"
     }
   ];
 
@@ -86,8 +55,7 @@ export default function Home() {
             Thrivemore Technology Advisors
           </h1>
           <p className="text-xl text-slate-300 mb-8">
-            Choose from four distinct design approaches for our digital presence.
-            Each design targets the same audience with a unique aesthetic and user experience.
+            Explore the four conceptual options below and consider the content functionality and layout that would potentially best serve a Thrivemore technology web audience.
           </p>
         </div>
       </section>
@@ -95,54 +63,98 @@ export default function Home() {
       {/* Design Options Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {designs.map((design) => (
-              <Link key={design.id} href={design.route} className="block h-full">
-                <Card className="h-full hover:shadow-lg hover:shadow-slate-700/50 transition-all cursor-pointer hover:scale-105 transform transition-transform bg-slate-800 border-slate-700">
-                  <CardHeader>
-                    <CardTitle className="text-2xl text-white">{design.title}</CardTitle>
-                    <CardDescription className="text-base text-slate-300">
-                      {design.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {/* Thumbnail Preview */}
-                    <div className={`relative h-32 ${design.thumbnail.background} rounded-lg mb-4 overflow-hidden flex items-center justify-center`}>
-                      <div className="text-center z-10">
-                        <h3 className={`text-lg font-bold bg-gradient-to-r ${design.thumbnail.accent} bg-clip-text text-transparent`}>
-                          {design.thumbnail.title}
-                        </h3>
-                        <p className="text-white/90 text-sm font-medium">{design.thumbnail.subtitle}</p>
-                        <p className="text-white/70 text-xs mt-1">{design.thumbnail.tagline}</p>
-                      </div>
-                      {/* Background decoration */}
-                      <div className="absolute inset-0 opacity-10">
-                        {Array.from({ length: 20 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute w-1 h-1 bg-white rounded-full"
-                            style={{
-                              left: `${Math.random() * 100}%`,
-                              top: `${Math.random() * 100}%`,
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {designs.map((design, index) => (
+              <Link key={design.id} href={design.route} className="block">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: [0, -5, 5, 0],
+                    transition: { duration: 0.5 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-full aspect-square bg-gradient-to-br ${design.color} rounded-xl flex items-center justify-center cursor-pointer relative overflow-hidden border-4 border-white/30 shadow-lg hover:shadow-2xl transition-shadow duration-300`}
+                >
+                  {/* Animated gradient overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0"
+                    animate={{
+                      x: ['-100%', '100%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  />
 
-                    <ul className="space-y-2 mb-6">
-                      {design.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm text-slate-300">
-                          <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-2 px-4 rounded-md text-center font-medium hover:from-cyan-600 hover:to-blue-700 transition-colors">
-                      View {design.title} Design
-                    </div>
-                  </CardContent>
-                </Card>
+                  {/* Glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="absolute inset-0 bg-white/10 blur-xl" />
+                  </motion.div>
+
+                  {/* Particle effects */}
+                  <div className="absolute inset-0 opacity-30">
+                    {Array.from({ length: 15 }).map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                        }}
+                        animate={{
+                          scale: [0, 1, 0],
+                          opacity: [0, 1, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: Math.random() * 2,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Letter */}
+                  <motion.span
+                    className="text-white text-6xl font-bold z-10 relative"
+                    whileHover={{
+                      scale: 1.2,
+                      textShadow: "0 0 20px rgba(255,255,255,0.8)",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {design.letter}
+                  </motion.span>
+
+                  {/* Border glow animation */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl border-2 border-white"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.5 }}
+                    animate={{
+                      boxShadow: [
+                        '0 0 10px rgba(255,255,255,0.3)',
+                        '0 0 30px rgba(255,255,255,0.6)',
+                        '0 0 10px rgba(255,255,255,0.3)',
+                      ],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
               </Link>
             ))}
           </div>
@@ -152,8 +164,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-slate-700 py-8 mt-16">
         <div className="container mx-auto px-4 text-center text-slate-400">
-          <p>&copy; 2025 Thrivemore Technology Advisors. All rights reserved.</p>
-          <p className="mt-2">Four designs, one vision</p>
+          <p>&copy; 2025 Thrivemore Advisors. All rights reserved.</p>
         </div>
       </footer>
     </div>

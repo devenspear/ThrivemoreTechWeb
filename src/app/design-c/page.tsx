@@ -137,8 +137,24 @@ export default function DesignC() {
       {/* Fixed Navigation Header */}
       <nav className="fixed top-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-6">
             <Logo />
+            <div className="hidden md:flex items-center gap-3">
+              {[
+                { id: "design-a", letter: "A", route: "/design-a", color: "from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800" },
+                { id: "design-b", letter: "B", route: "/design-b", color: "from-cyan-500 to-cyan-700 hover:from-cyan-600 hover:to-cyan-800" },
+                { id: "design-c", letter: "C", route: "/design-c", color: "from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800" },
+                { id: "design-d", letter: "D", route: "/design-d", color: "from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800" }
+              ].map((design) => (
+                <Link key={design.id} href={design.route}>
+                  <div className={`w-10 h-10 bg-gradient-to-br ${design.color} rounded-lg flex items-center justify-center cursor-pointer border-2 border-white/30 hover:border-white/50 transition-all hover:scale-110`}>
+                    <span className="text-white text-lg font-bold">
+                      {design.letter}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="flex items-center space-x-6">
             <nav className="hidden md:flex space-x-6">

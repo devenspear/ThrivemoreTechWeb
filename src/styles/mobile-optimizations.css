@@ -89,7 +89,9 @@ body {
   }
 
   /* Make buttons full width on very small screens */
-  .flex.flex-col.sm\\:flex-row button {
-    width: 100% !important;
+  @media (max-width: 640px) {
+    .flex.flex-col button {
+      width: 100% !important;
+    }
   }
 }

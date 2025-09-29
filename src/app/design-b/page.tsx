@@ -70,8 +70,24 @@ export default function DesignB() {
       {/* Fixed Navigation Header */}
       <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm border-b border-cyan-500/30 z-50">
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-6">
             <Logo variant="white" />
+            <div className="hidden md:flex items-center gap-3">
+              {[
+                { id: "design-a", letter: "A", route: "/design-a", color: "from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800" },
+                { id: "design-b", letter: "B", route: "/design-b", color: "from-cyan-500 to-cyan-700 hover:from-cyan-600 hover:to-cyan-800" },
+                { id: "design-c", letter: "C", route: "/design-c", color: "from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800" },
+                { id: "design-d", letter: "D", route: "/design-d", color: "from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800" }
+              ].map((design) => (
+                <Link key={design.id} href={design.route}>
+                  <div className={`w-10 h-10 bg-gradient-to-br ${design.color} rounded-lg flex items-center justify-center cursor-pointer border-2 border-white/30 hover:border-white/50 transition-all hover:scale-110`}>
+                    <span className="text-white text-lg font-bold">
+                      {design.letter}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <nav className="hidden md:flex space-x-6">
@@ -88,7 +104,7 @@ export default function DesignB() {
       </nav>
 
       {/* Hero Section with Particle Network */}
-      <section className="relative pt-24 pb-16 px-4 min-h-[75vh] flex items-center">
+      <section className="relative pt-24 pb-8 px-4 min-h-[50vh] flex items-center">
         <ParticleNetwork />
         <div className="container mx-auto text-center max-w-5xl relative z-10">
           <motion.div
@@ -129,29 +145,29 @@ export default function DesignB() {
             transition={{ duration: 1, delay: 1.2 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-6">
-              <div className="text-3xl font-bold text-cyan-400 mb-1">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:bg-cyan-500/10 border-2 border-blue-300 dark:border-cyan-500/30 rounded-lg p-6 shadow-lg shadow-blue-100/50 dark:shadow-none">
+              <div className="text-3xl font-bold text-blue-600 dark:text-cyan-400 mb-1">
                 <AnimatedCounter end={companyStats.acres} suffix="K+" />
               </div>
-              <div className="text-cyan-200 text-sm">Acres Connected</div>
+              <div className="text-slate-700 dark:text-cyan-200 text-sm">Acres Connected</div>
             </div>
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-6">
-              <div className="text-3xl font-bold text-cyan-400 mb-1">
+            <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:bg-cyan-500/10 border-2 border-purple-300 dark:border-cyan-500/30 rounded-lg p-6 shadow-lg shadow-purple-100/50 dark:shadow-none">
+              <div className="text-3xl font-bold text-purple-600 dark:text-cyan-400 mb-1">
                 <AnimatedCounter end={companyStats.units} suffix="K+" />
               </div>
-              <div className="text-cyan-200 text-sm">Smart Units</div>
+              <div className="text-slate-700 dark:text-cyan-200 text-sm">Smart Units</div>
             </div>
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-6">
-              <div className="text-3xl font-bold text-green-400 mb-1">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:bg-cyan-500/10 border-2 border-green-300 dark:border-cyan-500/30 rounded-lg p-6 shadow-lg shadow-green-100/50 dark:shadow-none">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">
                 <AnimatedCounter end={companyStats.value} prefix="$" suffix="B+" />
               </div>
-              <div className="text-cyan-200 text-sm">Digital Value</div>
+              <div className="text-slate-700 dark:text-cyan-200 text-sm">Digital Value</div>
             </div>
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-6">
-              <div className="text-3xl font-bold text-cyan-400 mb-1">
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:bg-cyan-500/10 border-2 border-orange-300 dark:border-cyan-500/30 rounded-lg p-6 shadow-lg shadow-orange-100/50 dark:shadow-none">
+              <div className="text-3xl font-bold text-orange-600 dark:text-cyan-400 mb-1">
                 <AnimatedCounter end={companyStats.projects} suffix="+" />
               </div>
-              <div className="text-cyan-200 text-sm">Tech Plans</div>
+              <div className="text-slate-700 dark:text-cyan-200 text-sm">Tech Plans</div>
             </div>
           </motion.div>
         </div>
@@ -179,9 +195,9 @@ export default function DesignB() {
 
                 <div className="space-y-4">
                   {[
-                    { icon: BarChart3, title: "Impeded Sales", description: "Without connectivity, absorption rates drop 23% on average" },
-                    { icon: Zap, title: "Reduced Valuations", description: "Properties command 15% lower prices without tech infrastructure" },
-                    { icon: Database, title: "Financing Challenges", description: "Lenders require technology master plans for approval" }
+                    { icon: BarChart3, title: "Impeded Sales", description: "Without connectivity, absorption rates drop 23% on average", gradient: "from-red-50 to-orange-50", border: "border-red-300", shadow: "shadow-red-100/50", iconGradient: "from-red-500 to-orange-500" },
+                    { icon: Zap, title: "Reduced Valuations", description: "Properties command 15% lower prices without tech infrastructure", gradient: "from-amber-50 to-yellow-50", border: "border-amber-300", shadow: "shadow-amber-100/50", iconGradient: "from-amber-500 to-yellow-500" },
+                    { icon: Database, title: "Financing Challenges", description: "Lenders require technology master plans for approval", gradient: "from-rose-50 to-pink-50", border: "border-rose-300", shadow: "shadow-rose-100/50", iconGradient: "from-rose-500 to-pink-500" }
                   ].map((risk, index) => (
                     <motion.div
                       key={index}
@@ -189,14 +205,14 @@ export default function DesignB() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="flex items-start space-x-4 p-4 bg-slate-800/30 rounded-lg border border-cyan-500/20"
+                      className={`flex items-start space-x-4 p-4 bg-gradient-to-br ${risk.gradient} dark:bg-slate-800/30 rounded-lg border-2 ${risk.border} dark:border-cyan-500/20 shadow-lg ${risk.shadow} dark:shadow-none`}
                     >
-                      <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${risk.iconGradient} rounded-full flex items-center justify-center flex-shrink-0`}>
                         <risk.icon className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-white mb-1">{risk.title}</h4>
-                        <p className="text-cyan-200 text-sm">{risk.description}</p>
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-1">{risk.title}</h4>
+                        <p className="text-slate-700 dark:text-cyan-200 text-sm">{risk.description}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -209,27 +225,27 @@ export default function DesignB() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-8 rounded-2xl border border-cyan-500/30"
+                  className="bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 dark:from-cyan-500/20 dark:to-blue-500/20 p-8 rounded-2xl border-2 border-indigo-300 dark:border-cyan-500/30 shadow-xl shadow-indigo-100/50 dark:shadow-none"
                 >
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-4">The $71 Billion Question</h3>
-                    <div className="w-24 h-24 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mx-auto flex items-center justify-center mb-4">
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">The $71 Billion Question</h3>
+                    <div className="w-24 h-24 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mx-auto flex items-center justify-center mb-4 shadow-lg">
                       <Network className="h-12 w-12 text-white" />
                     </div>
                   </div>
 
                   <div className="space-y-4 text-center">
-                    <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-red-300 dark:text-red-400">NO GUARANTEE</div>
-                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">of connectivity for new developments</div>
+                    <div className="p-4 bg-gradient-to-r from-red-100 to-orange-100 dark:bg-slate-800/50 rounded-lg border-2 border-red-300 dark:border-transparent shadow-md dark:shadow-none">
+                      <div className="text-2xl font-bold text-red-600 dark:text-red-300">NO GUARANTEE</div>
+                      <div className="text-slate-700 dark:text-cyan-200 text-sm">of connectivity for new developments</div>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-orange-300 dark:text-orange-400">MASSIVE LIABILITY</div>
-                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">for unprepared developers</div>
+                    <div className="p-4 bg-gradient-to-r from-orange-100 to-amber-100 dark:bg-slate-800/50 rounded-lg border-2 border-orange-300 dark:border-transparent shadow-md dark:shadow-none">
+                      <div className="text-2xl font-bold text-orange-600 dark:text-orange-300">MASSIVE LIABILITY</div>
+                      <div className="text-slate-700 dark:text-cyan-200 text-sm">for unprepared developers</div>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-lg">
-                      <div className="text-2xl font-bold text-green-300 dark:text-green-400">SOLUTION READY</div>
-                      <div className="text-cyan-600 dark:text-cyan-200 text-sm">with Thrivemore's expertise</div>
+                    <div className="p-4 bg-gradient-to-r from-green-100 to-emerald-100 dark:bg-slate-800/50 rounded-lg border-2 border-green-300 dark:border-transparent shadow-md dark:shadow-none">
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-300">SOLUTION READY</div>
+                      <div className="text-slate-700 dark:text-cyan-200 text-sm">with Thrivemore's expertise</div>
                     </div>
                   </div>
                 </motion.div>
@@ -264,19 +280,34 @@ export default function DesignB() {
                 icon: Network,
                 title: "IoT & Connectivity",
                 description: "Smart sensors, environmental monitoring, and seamless connectivity throughout the community",
-                features: ["Fiber-to-the-home", "5G infrastructure", "Smart lighting", "Environmental sensors"]
+                features: ["Fiber-to-the-home", "5G infrastructure", "Smart lighting", "Environmental sensors"],
+                gradient: "from-blue-50 to-cyan-50",
+                border: "border-blue-300",
+                shadow: "shadow-blue-100/50",
+                iconGradient: "from-cyan-500 to-blue-500",
+                bulletColors: ["bg-blue-500", "bg-cyan-500", "bg-indigo-500", "bg-sky-500"]
               },
               {
                 icon: Zap,
                 title: "Wellness Technology",
                 description: "Health-focused infrastructure that promotes wellbeing and quality of life for residents",
-                features: ["Air quality monitoring", "Noise management", "Wellness apps", "Biometric integration"]
+                features: ["Air quality monitoring", "Noise management", "Wellness apps", "Biometric integration"],
+                gradient: "from-green-50 to-emerald-50",
+                border: "border-green-300",
+                shadow: "shadow-green-100/50",
+                iconGradient: "from-green-500 to-emerald-500",
+                bulletColors: ["bg-green-500", "bg-emerald-500", "bg-teal-500", "bg-lime-500"]
               },
               {
                 icon: Cpu,
                 title: "Sustainability",
                 description: "Technology solutions that reduce environmental impact and promote sustainable living",
-                features: ["Energy optimization", "Water management", "Waste reduction", "Carbon tracking"]
+                features: ["Energy optimization", "Water management", "Waste reduction", "Carbon tracking"],
+                gradient: "from-purple-50 to-violet-50",
+                border: "border-purple-300",
+                shadow: "shadow-purple-100/50",
+                iconGradient: "from-purple-500 to-violet-500",
+                bulletColors: ["bg-purple-500", "bg-violet-500", "bg-fuchsia-500", "bg-indigo-500"]
               }
             ].map((dimension, index) => (
               <motion.div
@@ -286,19 +317,19 @@ export default function DesignB() {
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
-                <Card className="bg-gradient-to-br from-slate-800/50 to-cyan-900/30 border-cyan-500/30 h-full hover:border-cyan-400/50 transition-all duration-300">
+                <Card className={`bg-gradient-to-br ${dimension.gradient} dark:from-slate-800/50 dark:to-cyan-900/30 border-2 ${dimension.border} dark:border-cyan-500/30 h-full hover:border-opacity-70 dark:hover:border-cyan-400/50 transition-all duration-300 shadow-lg ${dimension.shadow} dark:shadow-none`}>
                   <CardHeader className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className={`w-16 h-16 bg-gradient-to-r ${dimension.iconGradient} rounded-full flex items-center justify-center mx-auto mb-4 shadow-md`}>
                       <dimension.icon className="h-8 w-8 text-white" />
                     </div>
-                    <CardTitle className="text-white text-xl">{dimension.title}</CardTitle>
-                    <CardDescription className="text-cyan-200">{dimension.description}</CardDescription>
+                    <CardTitle className="text-slate-900 dark:text-white text-xl">{dimension.title}</CardTitle>
+                    <CardDescription className="text-slate-700 dark:text-cyan-200">{dimension.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {dimension.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-cyan-200 text-sm">
-                          <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                        <li key={idx} className="flex items-center text-slate-700 dark:text-cyan-200 text-sm">
+                          <div className={`w-2 h-2 ${dimension.bulletColors[idx]} dark:bg-cyan-400 rounded-full mr-3`}></div>
                           {feature}
                         </li>
                       ))}
