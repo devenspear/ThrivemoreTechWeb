@@ -139,15 +139,19 @@ function DataVisualization() {
           <Bar dataKey="value" layout="vertical" radius={5} fill={`url(#${metrics[selectedMetric].gradientId})`} label={{
             position: 'insideRight',
             content: (props: any) => {
-              const { x, y, width, value, index } = props;
+              const { x, y, width, height, value, index } = props;
               const entry = chartData[index];
+              const fontSize = Math.round(height * 0.6);
               return (
                 <text
-                  x={x + width - 10}
-                  y={y + 10}
+                  x={x + width - 15}
+                  y={y + height / 2}
                   fill="white"
-                  className="text-xs font-bold"
+                  fillOpacity="0.8"
+                  fontSize={fontSize}
+                  fontWeight="bold"
                   textAnchor="end"
+                  dominantBaseline="middle"
                 >
                   {entry.percentage}%
                 </text>
