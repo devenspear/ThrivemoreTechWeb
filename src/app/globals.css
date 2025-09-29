@@ -208,19 +208,13 @@ html:not(.dark) [class*="text-purple"]:not(.bg-clip-text) { color: #000000 !impo
 html:not(.dark) [class*="text-indigo"]:not(.bg-clip-text) { color: #000000 !important; }
 
 /* PRESERVE gradient text effects in both modes */
-.text-transparent {
-  color: transparent !important;
+.bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 }
 
-html:not(.dark) .bg-clip-text {
+.text-transparent {
   color: transparent !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-}
-.dark .bg-clip-text {
-  color: transparent !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
 }
 
 /* ENHANCED DARK MODE TEXT COLORS */

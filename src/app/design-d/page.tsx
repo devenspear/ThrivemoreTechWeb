@@ -12,11 +12,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 
 // Animated Counter Component
-function AnimatedCounter({ end, duration = 2, prefix = "", suffix = "" }: {
+function AnimatedCounter({ end, duration = 2, prefix = "", suffix = "", className = "" }: {
   end: number;
   duration?: number;
   prefix?: string;
   suffix?: string;
+  className?: string;
 }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -40,6 +41,7 @@ function AnimatedCounter({ end, duration = 2, prefix = "", suffix = "" }: {
       whileInView={{ opacity: 1 }}
       onViewportEnter={() => setHasAnimated(true)}
       viewport={{ once: true }}
+      className={className}
     >
       {prefix}{count.toLocaleString()}{suffix}
     </motion.span>
@@ -490,7 +492,7 @@ export default function DesignD() {
               viewport={{ once: true }}
               className="space-y-3 p-6 bg-gradient-to-br from-teal-500/10 to-cyan-600/10 rounded-xl border border-teal-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent">
+              <div className="text-5xl lg:text-6xl font-bold text-teal-400">
                 <AnimatedCounter end={114} suffix="K+" />
               </div>
               <div className="text-slate-300 font-medium">Acres Connected</div>
@@ -503,7 +505,7 @@ export default function DesignD() {
               viewport={{ once: true }}
               className="space-y-3 p-6 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl border border-cyan-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <div className="text-5xl lg:text-6xl font-bold text-cyan-400">
                 <AnimatedCounter end={130} suffix="K+" />
               </div>
               <div className="text-slate-300 font-medium">Smart Homes</div>
@@ -516,7 +518,7 @@ export default function DesignD() {
               viewport={{ once: true }}
               className="space-y-3 p-6 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-xl border border-green-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+              <div className="text-5xl lg:text-6xl font-bold text-green-400">
                 <AnimatedCounter end={71} prefix="$" suffix="B+" />
               </div>
               <div className="text-slate-300 font-medium">Investment Value</div>
@@ -529,7 +531,7 @@ export default function DesignD() {
               viewport={{ once: true }}
               className="space-y-3 p-6 bg-gradient-to-br from-purple-500/10 to-indigo-600/10 rounded-xl border border-purple-500/20 hover:scale-105 transition-transform"
             >
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">
+              <div className="text-5xl lg:text-6xl font-bold text-purple-400">
                 <AnimatedCounter end={47} suffix="+" />
               </div>
               <div className="text-slate-300 font-medium">Master Plans</div>
