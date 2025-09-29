@@ -359,43 +359,6 @@ export default function DesignD() {
               </motion.div>
             ))}
           </div>
-
-          {/* Impact Statistics */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="mt-24 text-center"
-          >
-            <h3 className="text-3xl font-bold text-white mb-12">Collective Impact</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div>
-                <div className="text-5xl font-bold text-yellow-400 mb-2">
-                  {companyStats.acres.toLocaleString()}+
-                </div>
-                <div className="text-slate-300">Acres Connected</div>
-              </div>
-              <div>
-                <div className="text-5xl font-bold text-blue-400 mb-2">
-                  {companyStats.units.toLocaleString()}+
-                </div>
-                <div className="text-slate-300">Homes Empowered</div>
-              </div>
-              <div>
-                <div className="text-5xl font-bold text-green-400 mb-2">
-                  ${companyStats.value}B+
-                </div>
-                <div className="text-slate-300">Value Created</div>
-              </div>
-              <div>
-                <div className="text-5xl font-bold text-purple-400 mb-2">
-                  {companyStats.projects}+
-                </div>
-                <div className="text-slate-300">Dreams Realized</div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
