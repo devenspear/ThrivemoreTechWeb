@@ -136,7 +136,7 @@ function DataVisualization() {
             cursor={false}
             content={<ChartTooltipContent hideLabel />}
           />
-          <Bar dataKey="value" layout="vertical" radius={5} fill={`url(#${metrics[selectedMetric].gradientId})`} label={{
+          <Bar dataKey="value" radius={5} fill={`url(#${metrics[selectedMetric].gradientId})`} label={{
             position: 'insideRight',
             content: (props: any) => {
               const { x, y, width, height, value, index } = props;
@@ -634,41 +634,30 @@ export default function DesignC() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-gradient-to-br from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
-                  Contact Information
+              <div>
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">
+                  What makes your story unique?
                 </h3>
                 <div className="space-y-4">
-                  <div>
-                    <p className="font-medium text-slate-900 dark:text-white">Amy Westwood, Partner</p>
-                    <p className="text-slate-600 dark:text-slate-400">amy@thrivemoreadvisors.com</p>
-                    <p className="text-slate-600 dark:text-slate-400">904.944.4544</p>
-                  </div>
+                  {[
+                    "Proven methodology with 47+ successful projects",
+                    "Guaranteed connectivity from project inception",
+                    "Revenue-generating infrastructure partnerships",
+                    "Future-proof technology roadmaps"
+                  ].map((reason, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-3"
+                    >
+                      <div className="w-2 h-2 bg-slate-900 dark:bg-white rounded-full mt-2"></div>
+                      <span className="text-slate-600 dark:text-slate-300">{reason}</span>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
-                  Why Choose Thrivemore?
-                </h4>
-                {[
-                  "Proven methodology with 47+ successful projects",
-                  "Guaranteed connectivity from project inception",
-                  "Revenue-generating infrastructure partnerships",
-                  "Future-proof technology roadmaps"
-                ].map((reason, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div>
-                    <span className="text-slate-600 dark:text-slate-300">{reason}</span>
-                  </motion.div>
-                ))}
               </div>
             </motion.div>
 

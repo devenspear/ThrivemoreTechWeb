@@ -692,42 +692,28 @@ export default function DesignB() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-gradient-to-br from-slate-800/50 to-cyan-900/30 p-8 rounded-lg border border-cyan-500/30">
-                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-8">What makes your story unique?</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                      <Network className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-semibold">Amy Westwood, Partner</p>
-                      <p className="text-cyan-200">amy@thrivemoreadvisors.com</p>
-                      <p className="text-cyan-200">904.944.4544</p>
-                    </div>
-                  </div>
+                  {[
+                    "100% connectivity guarantee from day one",
+                    "Transform costs into revenue streams",
+                    "Future-proof infrastructure planning",
+                    "Award-winning innovation partnerships"
+                  ].map((advantage, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-3"
+                    >
+                      <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mt-2"></div>
+                      <span className="text-cyan-200">{advantage}</span>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">Technology Advantages</h4>
-                {[
-                  "100% connectivity guarantee from day one",
-                  "Transform costs into revenue streams",
-                  "Future-proof infrastructure planning",
-                  "Award-winning innovation partnerships"
-                ].map((advantage, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-                    <span className="text-cyan-200">{advantage}</span>
-                  </motion.div>
-                ))}
               </div>
             </motion.div>
 

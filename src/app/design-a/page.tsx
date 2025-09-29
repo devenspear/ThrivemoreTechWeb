@@ -384,34 +384,23 @@ export default function DesignA() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Contact Information</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-slate-900 dark:text-white font-semibold">Amy Westwood, Partner</p>
-                    <p className="text-slate-600 dark:text-slate-300">amy@thrivemoreadvisors.com</p>
-                    <p className="text-slate-600 dark:text-slate-300">904.944.4544</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Why Choose Thrivemore?</h4>
-                <ul className="space-y-2 text-slate-600 dark:text-slate-300">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
-                    Guaranteed connectivity from day one
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">What makes your story unique?</h3>
+                <ul className="space-y-4 text-slate-600 dark:text-slate-300">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-green-600 rounded-full mr-3 mt-2"></span>
+                    <span>Guaranteed connectivity from day one</span>
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
-                    Transform infrastructure costs into revenue streams
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-green-600 rounded-full mr-3 mt-2"></span>
+                    <span>Transform infrastructure costs into revenue streams</span>
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
-                    Proven track record with premier developers
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-green-600 rounded-full mr-3 mt-2"></span>
+                    <span>Proven track record with premier developers</span>
                   </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-slate-400 rounded-full mr-3"></span>
-                    Future-proof technology roadmaps
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-green-600 rounded-full mr-3 mt-2"></span>
+                    <span>Future-proof technology roadmaps</span>
                   </li>
                 </ul>
               </div>

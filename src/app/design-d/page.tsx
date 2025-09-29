@@ -567,46 +567,28 @@ export default function DesignD() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                  <Users className="h-6 w-6 mr-3 text-yellow-400" />
-                  Your Storytelling Partners
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                      <Users className="h-8 w-8 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-lg">Amy Westwood, Partner</p>
-                      <p className="text-slate-300">Chief Storyteller & Revenue Architect</p>
-                      <p className="text-slate-400">amy@thrivemoreadvisors.com</p>
-                      <p className="text-slate-400">904.944.4544</p>
-                    </div>
-                  </div>
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-8">What makes your story unique?</h3>
+                <div className="space-y-4">
+                  {[
+                    "Every challenge becomes an opportunity",
+                    "Technology transforms from cost to revenue",
+                    "Your vision becomes our shared mission",
+                    "Success stories inspire future communities"
+                  ].map((point, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-3"
+                    >
+                      <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mt-2"></div>
+                      <span className="text-slate-300">{point}</span>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">What Makes Your Story Unique?</h4>
-                {[
-                  "Every challenge becomes an opportunity",
-                  "Technology transforms from cost to revenue",
-                  "Your vision becomes our shared mission",
-                  "Success stories inspire future communities"
-                ].map((point, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center space-x-3"
-                  >
-                    <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
-                    <span className="text-slate-300">{point}</span>
-                  </motion.div>
-                ))}
               </div>
             </motion.div>
 
